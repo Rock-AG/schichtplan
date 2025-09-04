@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\SubscriptionController;
@@ -25,14 +26,16 @@ use Illuminate\Support\Facades\Session;
 /**
  * Display home view, where users can create a plan
  */
-Route::get('/', function () {
-  // write erorrs into flash 
-  $errors = session()->get('errors');
-    if($errors !== null && $errors->any()) {
-      Session::flash('fail', __('home.csvImportFail', ["error" => $errors->first()]));
-    }
-    return view('home');
-})->name('home');
+// Route::get('/', function () {
+//   // write erorrs into flash 
+//   $errors = session()->get('errors');
+//     if($errors !== null && $errors->any()) {
+//       Session::flash('fail', __('home.csvImportFail', ["error" => $errors->first()]));
+//     }
+//     return view('home');
+// })->name('home');
+Route::get('/', [HomepageController::class, 'homepage'])
+    ->name('homepage');
 
 Route::get('/cron', [PlanController::class, 'cron'])->name('cron');
 

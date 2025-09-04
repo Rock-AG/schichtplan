@@ -1,12 +1,107 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+@font-face {
+  font-family: "Tower Ruins";
+  font-style: "normal";
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/towerruins/towerruins.ttf") format("truetype");
+}
+
+
+@theme {
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-tower-ruins: "Tower Ruins", sans-serif;
+
+  --size--footer: 50px;
+
+  --color-ci-black: #000;
+  --color-ci-gray-dark: #333;
+  --color-ci-gray-light: #d6d6d6;
+  --color-ci-white: #fff;
+  --color-ci-orange-light: #ea8927;
+  --color-ci-orange-dark: #ea6927;
+
+  --text-shadow-black-on-orange: 0px 0px 30px var(--color-white);
+}
 
 @layer utilities {
   .my-button {
     @apply bg-gray-300 hover:bg-gray-200 py-2 px-4 rounded mb-4 inline-block sm:w-auto;
     white-space: nowrap;
   }
+
+  .textlink {
+    @apply underline;
+  }
+
+  .arrow-button {
+    @apply block relative px-3 py-2 my-2 rounded font-bold bg-ci-gray-dark text-ci-white transition-colors duration-300 hover:bg-ci-orange-light hover:text-ci-black;
+    padding-right: calc((var(--spacing) * 2) + 25px);
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: calc(var(--spacing) * 2);
+      bottom: calc(var(--spacing) * 3);
+      background-image: url("../img/arrow-right-white.png");
+      width: 25px;
+      height: 25px;
+    }
+
+    &:hover::after {
+      background-image: url("../img/arrow-right-black.png");
+    }
+
+    > .burg {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: calc((var(--spacing) * 4) + 25px);
+      background-image: url("../img/burg.png");
+      background-size: cover;
+      width: 15%;
+      aspect-ratio: 682 / 362;
+    }
+  }
+
+  .header-bg-image {
+    background-color: var(--color-ci-orange-light);
+    background-image: url("../img/stage-bg.jpg");
+    background-size: cover;
+    background-position: bottom center;
+  }
+
+  .page-footer {
+    @apply bg-ci-white text-ci-black;
+    position: relative;
+    min-height: var(--size--footer);
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 1%;
+      bottom: 100%;
+      width: 30vw;
+      max-width: 300px;
+      background-image: url("../img/crowd.png");
+      background-size: contain;
+      aspect-ratio: 940 / 271;
+    }
+  }
 }
 
-@import '~flatpickr';
+

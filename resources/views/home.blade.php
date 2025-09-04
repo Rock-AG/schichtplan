@@ -1,41 +1,25 @@
 @extends('layout.app')
+
 @section('body')
-    <h1 class="text-3xl mb-2">{{ __('home.Shiftplan') }}</h1>
-    @include('partials.flash')
-
-    <p class="block mb-4">{{ __('home.shiftplanInfo') }}</p>
-
-    <a href="{{route('plan.create')}}" class="my-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        {{__('home.createPlan')}}
-    </a>
-    <a id="openImportButton" href="#" class="my-button" style="float:right">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        </svg>
-        {{__('plan.import')}}
-    </a>
-
-    <div style="display:none" id="importForm">
-    {{ __('plan.importHelp') }}
-    <form id="importPlanForm" method="post" action="{{route('plan.import')}}" enctype="multipart/form-data">
-    @csrf
-    <input type="file"
-       id="import" name="import"
-       accept="text/csv">
-    </form>
+<header class="bg-ci-orange-light text-center w-full mb-4 md:mb-6 text-ci-black text-shadow-black-on-orange">
+    <div class="header-bg-image p-4 md:py-6 xl:py-8 max-w-7xl mx-auto">
+        <h1>
+            <span class="text-3xl md:text-5xl xl:text-7xl font-tower-ruins ">{{ __('home.titleTop') }}</span><br />
+            <span class="text-xl md:text-3xl xl:text-5xl font-sans [font-variant:small-caps]">{{ __('home.titleSub') }}</span>
+        </h1>
+        <p class="mt-2 text-sm md:text-base xl:text-lg">
+            {!! __('home.titleCopy') !!}
+        </p>
     </div>
-
-    <p class="italic">{{__('home.deleteInfo') }}</p>
-
-    <div class="py-4">
-    <a href="{{route('plan.recover')}}">{{__('plan.recover')}}</a>
-    </div>
-
-    <ul class="flex md:justify-end md:text-sm text-xs justify-start">
-        <li class="mr-2">{!! __('plan.documentation') !!} </li>
-        <li>{!! __('home.copyleft') !!}</li>
-</ul>
+</header>
+<section class="homepage-content flex-1 px-4 py-4 md:py-6 md:mx-auto md:w-3xl">
+    <h2 class="text-xl xl:text-3xl font-tower-ruins mb-4 text-center">{{__('home.contentHeader')  }}</h2>
+    @foreach ($plans as $plan)
+        <a href="{{ route('plan.show', ['plan' => $plan]) }}" class="arrow-button mx-auto max-w-md md:max-w-xl xl:max-w-2xl">
+            <span>{{ $plan->title }}</span><br />
+            <span class="text-xs font-light italic">{{ $plan->getTimespan() }}</span>
+            @if (str_contains($plan->title, "Burg"))<span class="burg"></span>@endif
+        </a>
+    @endforeach
+</section>
 @endsection

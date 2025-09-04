@@ -158,4 +158,34 @@ class Plan extends Model implements
     {
         return null;
     }
+
+    public function getTimespan(): string
+    {
+        $firstShift = $this->hasMany(Shift::class)->orderBy('start')->first();
+        if (!$firstShift) {
+            return "";
+        }
+
+        $lastShift = $this->hasMany(Shift::class)->orderBy('end', 'desc')->first();
+        
+        $start = \Illuminate\Support\Facades\Date::parse($firstShift->start);
+        $end = \Illuminate\Support\Facades\Date::parse($lastShift->end);
+
+        // Same day
+        if ($start->isSameDay($end)) {
+            return $start->isoFormat("OD. MMMM YYYY");
+        }
+        // Same month
+        elseif ($start->isSameMonth($end)) {
+            return $start->isoFormat("OD.") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+        }
+        // Same year
+        elseif ($start->isSameYear($end)) {
+            return $start->isoFormat("OD. MMMM") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+        }
+        // Different year
+        else {
+            return $start->isoFormat("OD. MMMM YYYY") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+        }
+    }
 }
