@@ -9,6 +9,7 @@ use App\Http\Requests\StoreShiftRequest;
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\UpdatePlanRequest;
 use App\Models\Plan;
+use App\Models\Shift;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
@@ -239,7 +240,12 @@ class PlanController extends Controller
     {
         $this->auth($plan);
         $this->authorize("view", $plan);
-        return view('plan.admin')->with(['plan' => $plan]);
+
+        $shiftsGroupedByCategory = $plan->shifts->groupBy(function(Shift $item) {
+            return $item->type !== '' ? $item->type : __('shift.noType');
+        });
+
+        return view('plan.admin')->with(['plan' => $plan, 'shiftsGroupedByCategory' => $shiftsGroupedByCategory]);
     }
 
     /**
@@ -317,8 +323,7 @@ class PlanController extends Controller
             $res .= $end->isoFormat('HH:mm');
         } elseif($start->isSameYear($end)) {
             $res .= $start->isoFormat("OD. MMMM YYYY | HH:mm");
-            $res .= $inline ? "&nbsp;" : "<br>";
-            $res .= " - ";
+            $res .= "&nbsp; -";
             $res .= $inline ? "&nbsp;" : "<br>";
             $res .= $end->isoFormat("OD. MMMM YYYY | HH:mm");
         } else {

@@ -1,4 +1,4 @@
-<footer class="page-footer mt-4">
+<footer class="page-footer mt-4 md:mt-10 lg:mt-20">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row">
         <div class="w-full p-4 text-center md:text-left flex-1">
             <a href="/" class="textlink">Impressum / Datenschutz</a>

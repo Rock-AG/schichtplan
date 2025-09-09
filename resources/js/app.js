@@ -1,4 +1,5 @@
 import flatpickr from "flatpickr";
+import Accordion from "accordion-js";
 
 /**
  * Localize flatpickr
@@ -19,7 +20,7 @@ function addEvents() {
     });
 
     const el = document.getElementById('start');
-    if(el !== null) {
+    if (el !== null) {
         el.addEventListener("change",
             (function () {
                 const e1 = new Date(document.getElementById('start').value);
@@ -42,7 +43,7 @@ function addEvents() {
  */
 function deleteShift() {
     const forms = document.querySelectorAll('form.delete-shift');
-    if(forms.length > 0) {
+    if (forms.length > 0) {
         forms.forEach((form) => {
             const msg = form.dataset['confirmDeleteMsg'];
             form.addEventListener('submit', function (event) {
@@ -58,16 +59,44 @@ document.addEventListener('DOMContentLoaded', addEvents);
 document.addEventListener('DOMContentLoaded', deleteShift);
 
 function openImport() {
-  document.getElementById('importForm').style['display'] = 'block';
-  this.style['display']='none';
+    document.getElementById('importForm').style['display'] = 'block';
+    this.style['display'] = 'none';
 }
 function registerOpenImport() {
-  var button = document.getElementById('openImportButton');
-  if (button) {
-    button.onclick = openImport;
-    document.getElementById('import').onchange = function() {
-      document.getElementById('importPlanForm').submit();
-    };
-  }
+    var button = document.getElementById('openImportButton');
+    if (button) {
+        button.onclick = openImport;
+        document.getElementById('import').onchange = function () {
+            document.getElementById('importPlanForm').submit();
+        };
+    }
 }
 document.addEventListener('DOMContentLoaded', registerOpenImport);
+
+function createAccordion() {
+    const accordions = Array.from(document.querySelectorAll(".accordion-container"));
+    new Accordion(accordions);
+}
+document.addEventListener('DOMContentLoaded', createAccordion);
+
+function registerCopyLink() {
+    const copyButtons = Array.from(document.querySelectorAll(".js-copy-link"));
+    copyButtons.forEach(function (e) {
+        e.addEventListener('click', function () {
+            const textField = document.getElementById(this.dataset.inputId);
+            textField.select();
+            textField.setSelectionRange(0, 9999);
+
+            navigator.clipboard.writeText(textField.value)
+                .then(() => {
+                    this.querySelector('span').textContent = this.dataset.successText;
+                    textField.blur();
+                })
+                .catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', registerCopyLink);

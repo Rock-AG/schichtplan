@@ -13,6 +13,10 @@
 <body class="bg-black text-gray-100 h-full">
     <div class="flex flex-col min-h-screen max-w-[1920px] mx-auto">
 
+        @if($includeHeader ?? false)
+            @include('partials.header', ['pageTitle' => $pageTitle])
+        @endif
+
         @yield('body')
 
         @include('partials.footer')

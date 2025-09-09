@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app', ['includeHeader' => false])
 
 @section('body')
 <header class="bg-ci-orange-light text-center w-full mb-4 md:mb-6 text-ci-black text-shadow-black-on-orange">
@@ -12,10 +12,10 @@
         </p>
     </div>
 </header>
-<section class="homepage-content flex-1 px-4 py-4 md:py-6 md:mx-auto md:w-3xl">
+<section class="homepage-content flex-1 text-center px-4 py-4 md:py-6 md:mx-auto md:w-3xl">
     <h2 class="text-xl xl:text-3xl font-tower-ruins mb-4 text-center">{{__('home.contentHeader')  }}</h2>
     @foreach ($plans as $plan)
-        <a href="{{ route('plan.show', ['plan' => $plan]) }}" class="arrow-button mx-auto max-w-md md:max-w-xl xl:max-w-2xl">
+        <a href="{{ route('plan.show', ['plan' => $plan]) }}" class="icon-button icon-arrow mx-auto my-2 w-full max-w-md md:max-w-xl xl:max-w-2xl">
             <span>{{ $plan->title }}</span><br />
             <span class="text-xs font-light italic">{{ $plan->getTimespan() }}</span>
             @if (str_contains($plan->title, "Burg"))<span class="burg"></span>@endif

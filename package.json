@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@tailwindcss/postcss": "^4.1.12",
+        "accordion-js": "^3.4.1",
         "flatpickr": "^4.6.9",
         "sass-loader": "^12.3.0"
     }
