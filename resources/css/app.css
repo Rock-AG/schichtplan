@@ -46,7 +46,20 @@
   }
 
   .textlink {
-    @apply underline;
+    @apply underline whitespace-nowrap;
+
+    &[rel=external] {
+      &::after {
+        content: "";
+        display: inline-block;
+        background-image: url("../img/external-link.svg");
+        background-size: contain;
+        height: calc(var(--spacing) * 4);
+        aspect-ratio: 1 / 1;
+        position: relative;
+        top: calc(var(--spacing) * 0.5)
+      }
+    }
   }
 
   .icon-button {

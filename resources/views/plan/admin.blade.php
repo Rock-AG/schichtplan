@@ -39,7 +39,7 @@
                 </a>
             </div>
         </div>
-        <div class="md:table lg:max-w-3/4 mb-6 md:mb-12">
+        <div class="md:table md:max-w-3/4 lg:max-w-1/2 mb-6 md:mb-12">
             <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
                 <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">Titel</div>
                 <div class="md:table-cell md:p-2">{{ $plan->title }}</div>

@@ -5,8 +5,8 @@
         </div>
         <div class="w-full p-4 text-center border-t-1 border-ci-gray-light md:border-0 flex flex-col flex-2 md:flex-row md:justify-end">
             <span class="italic md:mx-4">copyleft Rock AG e.V.</span>
-            <span class="md:mx-4"><a class="textlink" href="https://github.com/Rock-AG/schichtplan" rel="external">Source ⧉</a></span>
-            <span class="md:mx-4"><a class="textlink" href="https://www.gnu.org/licenses/agpl-3.0.en.html" rel="external">AGPL License ⧉</a></span>
+            <span class="md:mx-4"><a class="textlink" href="https://github.com/Rock-AG/schichtplan" rel="external">Source</a></span>
+            <span class="md:mx-4"><a class="textlink" href="https://www.gnu.org/licenses/agpl-3.0.en.html" rel="external">AGPL License</a></span>
         </div>
     </div>
 </footer>

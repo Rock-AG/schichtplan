@@ -1336,7 +1336,20 @@
     white-space: nowrap;
   }
   .textlink {
+    white-space: nowrap;
     text-decoration-line: underline;
+    &[rel=external] {
+      &::after {
+        content: "";
+        display: inline-block;
+        background-image: url(/images/external-link.svg?938b50834d989e7f02c0a97c35b31419);
+        background-size: contain;
+        height: calc(var(--spacing) * 4);
+        aspect-ratio: 1 / 1;
+        position: relative;
+        top: calc(var(--spacing) * 0.5);
+      }
+    }
   }
   .icon-button {
     position: relative;
