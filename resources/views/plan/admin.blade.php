@@ -41,19 +41,35 @@
         </div>
         <div class="md:table md:max-w-3/4 lg:max-w-1/2 mb-6 md:mb-12">
             <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">Titel</div>
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.title') }}</div>
                 <div class="md:table-cell md:p-2">{{ $plan->title }}</div>
             </div>
             <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">Beschreibung</div>
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.planDesc') }}</div>
                 <div class="md:table-cell md:p-2">{{ $plan->description }}</div>
             </div>
             <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">Kontakt-Info</div>
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.contactDesc') }}</div>
                 <div class="md:table-cell md:p-2">{{ $plan->contact }}</div>
             </div>
             <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">Austragen erlaubt</div>
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.showOnHomepage') }}</div>
+                <div class="md:table-cell md:p-2">
+                    <div class="w-6 mt-1 md:m-0">
+                        @include('partials.svg.' . ($plan->show_on_homepage == 1 ? 'checkmark' : 'cross'))
+                    </div>
+                </div>
+            </div>
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowSubscribe') }}</div>
+                <div class="md:table-cell md:p-2">
+                    <div class="w-6 mt-1 md:m-0">
+                        @include('partials.svg.' . ($plan->allow_subscribe == 1 ? 'checkmark' : 'cross'))
+                    </div>
+                </div>
+            </div>
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowUnsubscribe') }}</div>
                 <div class="md:table-cell md:p-2">
                     <div class="w-6 mt-1 md:m-0">
                         @include('partials.svg.' . ($plan->allow_unsubscribe == 1 ? 'checkmark' : 'cross'))
