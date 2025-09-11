@@ -20,6 +20,8 @@ class UpdatePlanRequest extends FormRequest
             'contact' => 'max:500',
             'owner_email' => 'required|email',
             'allow_unsubscribe' => 'max:1',
+            'allow_subscribe' => 'max:1',
+            'show_on_homepage' => 'max:1',
         ];
     }
 

@@ -12,12 +12,12 @@
 
             {{-- Header + Intro-Text --}}
             <div class="md:max-w-3/4 lg:max-w-1/2">
-                <h1 class="font-tower-ruins text-2xl md:text-3xl lg:text-4xl mb-2">{{ __('plan.planAdminTitle') }}</h1>
+                <h1 class="section-header mb-2">{{ __('plan.planAdminTitle') }}</h1>
                 <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntro') }}</p>
                 <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntroLinkDescription') }}</p>
                 
-                <div class="flex flex-col md:flex-row [gap:8px] md:items-center">
-                    <input class="w-full border-1 border-ci-gray-light bg-ci-gray-dark rounded p-2 md:flex-3" type="text" id="plan-view-link" readonly aria-readonly="true" value="{{route('plan.show', ['plan' => $plan])}}">
+                <div class="flex flex-col md:flex-row gap-2 md:items-center">
+                    <input class="md:flex-3" type="text" id="plan-view-link" readonly aria-readonly="true" value="{{route('plan.show', ['plan' => $plan])}}">
                     <div>
                         <button type="submit" class="icon-button w-auto whitespace-nowrap js-copy-link" data-input-id="plan-view-link" data-success-text="{{ __('plan.copyLinkSuccess') }}">
                             <span>Link kopieren</span>
@@ -30,8 +30,8 @@
         </div>
         
         {{-- Basic settings --}}
-        <div class="flex flex-wrap items-center [gap:8px] mb-2">
-            <h2 class="font-tower-ruins text-2xl md:text-3xl lg:text-4xl">{{ __('plan.planAdminBasicSettingsTitle') }}</h2>
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+            <h2 class="section-header">{{ __('plan.planAdminBasicSettingsTitle') }}</h2>
             <div>
                 <a class="icon-button w-auto" href="{{route('plan.edit', ['plan' => $plan])}}">
                     <span>{{ __('plan.editSettings') }}</span>
@@ -80,7 +80,7 @@
 
 
         {{-- Shifts header --}}
-        <h2 class="mb-2 font-tower-ruins text-2xl md:text-3xl lg:text-4xl">{{ __('plan.planAdminShiftsTitle') }}</h2>
+        <h2 class="section-header mb-2">{{ __('plan.planAdminShiftsTitle') }}</h2>
         <p class="text-sm lg:text-base mb-4">{{ __('plan.planAdminShiftsIntro') }}</p>
         <p class="mb-4">
             <a class="icon-button w-auto" href="{{route('plan.shift.create', ['plan' => $plan])}}">
@@ -132,7 +132,7 @@
                                     </div>
 
                                     <div class="align-top md:table-cell">
-                                        <div class="flex flex-row md:flex-col justify-start text-right [gap:8px] mt-2 md:m-2">
+                                        <div class="flex flex-row md:flex-col justify-start text-right gap-2 mt-2 md:m-2">
 
                                             <a class="icon-button w-auto" href="{{route('plan.shift.edit',  ['plan' => $plan, 'shift' => $shift])}}">
                                                 <span>Bearbeiten</span>

@@ -11,7 +11,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-black text-gray-100 h-full">
-    <div class="flex flex-col min-h-screen max-w-[1920px] mx-auto">
+    <div class="flex flex-col min-h-screen max-w-[1920px] mx-auto bg-rockag">
 
         @if($includeHeader ?? false)
             @include('partials.header', ['pageTitle' => $pageTitle])

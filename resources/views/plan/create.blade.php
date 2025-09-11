@@ -1,69 +1,120 @@
-@extends('layout.app')
+@php
+    $mode = (isset($plan->id) && $plan->id > 0) ? "edit" : "create";
+
+    if ($mode == "edit") {
+        $pageTitle = $plan->title . " (Grundeinstellungen)";
+        $formAction = route('plan.update', ['plan' => $plan]);
+    } else {
+        $pageTitle = "Neuen Schichtplan erstellen";
+        $formAction = route('plan.store');
+    }
+@endphp
+
+@extends('layout.app', [
+    'includeHeader' => true,
+    'pageTitle' => $pageTitle,
+])
+
 @section('body')
-        @if(isset($plan->id) && $plan->id > 0)
-            <form method="post" action="{{route('plan.update', ['plan' => $plan])}}">
-                @method("put")
-        @else
-        <h1 class="text-3xl mb-2">{{ __('plan.heading') }}</h1>
-            <form method="post" action="{{route('plan.store')}}">
-        @endif
+    <div class="max-w-full mx-2 mb-4 flex-1">
+
+        {{-- Header --}}
+        <h1 class="section-header">{{ __("plan.heading_" . $mode) }}</h1>
+
+        {{-- Form--}}
+        <form action="{{ $formAction }}" method="post">
             @csrf
-            <div class="grid md:grid-flow-row md:gap-4">
-                <div>
-                    <label for="title" class="block text-gray-700">{{__("plan.title")}}</label>
-                    <input id="title" name="title" type="text" class="@error('title') border-red-500 @enderror w-full block text-black p-1 text-lg mb-2 border rounded" value="{{old('title', $plan->title)}}">
+
+            @if($mode == "edit")
+                @method("put")
+            @endif
+
+            <div class="md:grid md:grid-cols-2 @if($mode == 'edit') md:grid-rows-2 @else md:grid-rows-3 @endif md:gap-2">
+                <div class="mb-2 md:mb-0">
+                    <label for="title" class="block mb-1 text-sm md:text-base">{{__("plan.title")}}</label>
+                    <input id="title" name="title" type="text" class="@error('title') error @enderror w-full" value="{{ old('title', $plan->title) }}">
                     @error('title')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
+                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
                 </div>
-            <div class="row-span-2 flex flex-col">
-                <label for="description" class="block text-gray-700">{{__("plan.planDesc")}}</label>
-                <textarea id="description" name="description" class="@error('description') border-red-500 @enderror w-full h-full block text-gray-700 p-1 mb-2 border rounded">{{old('description', $plan->description)}}</textarea>
-                @error('description')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                @enderror
+
+                <div class="mb-2 md:mb-0 md:row-span-4">
+                    <label for="description" class="block mb-1 text-sm md:text-base">{{__("plan.planDesc")}}</label>
+                    <textarea id="description" rows="5" name="description" class="@error('description') error @enderror w-full field-sizing-content">{{old('description', $plan->description)}}</textarea>
+                    @error('description')
+                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-2 md:mb-0">
+                    <label for="contact" class="block mb-1 text-sm md:text-base">{{__("plan.contactDesc")}}</label>
+                    <input id="contact" name="contact" type="text" class="@error('contact') error @enderror w-full" value="{{ old('contact', $plan->contact) }}">
+                    @error('contact')
+                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-2 md:mb-0">
+                    <label for="owner_email" class="block mb-1 text-sm md:text-base">{{__("plan.mailDesc")}}</label>
+                    <input id="owner_email" name="owner_email" type="text" class="@error('owner_email') error @enderror w-full" value="{{ old('owner_email', $plan->owner_email) }}" @if($mode == 'edit') readonly @endif>
+                    @error('owner_email')
+                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                    @enderror
+                </div>
+                
             </div>
-            <div>
-                <label for="contact" class="block text-gray-700">{{__("plan.contactDesc")}}</label>
-                <input id="contact" name="contact" type="text" class="@error('contact') border-red-500 @enderror w-full block text-black p-1 text-lg mb-2 border rounded" value="{{old('contact', $plan->contact)}}">
-                @error('contact')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                @enderror
+
+            <div class="">
+
+                <div class="block mb-2">
+                    <input id="allow_subscribe" name="allow_subscribe" type="checkbox" value="1" {{ old('allow_subscribe', $plan->allow_subscribe) ? 'checked' : '' }} >
+                    <label for="allow_subscribe">{{__("plan.allowSubscribe")}}</label>
+                    @error('allow_subscribe')
+                        <div class="text-red-700 text-xs italic">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="block mb-2">
+                    <input id="allow_unsubscribe" name="allow_unsubscribe" type="checkbox" value="1" {{ old('allow_unsubscribe', $plan->allow_unsubscribe) ? 'checked' : '' }} >
+                    <label for="allow_unsubscribe">{{__("plan.allowUnsubscribe")}}</label>
+                    @error('allow_unsubscribe')
+                        <div class="text-red-700 text-xs italic">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="block mb-2">
+                    <input id="show_on_homepage" name="show_on_homepage" type="checkbox" value="1" {{ old('show_on_homepage', $plan->show_on_homepage) ? 'checked' : '' }} >
+                    <label for="show_on_homepage">{{__("plan.showOnHomepage")}}</label>
+                    @error('show_on_homepage')
+                        <div class="text-red-700 text-xs italic">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                @if ($mode == "create")
+                    <div class="block mt-4 mb-2">
+                        <input id="notification" name="notification" type="checkbox" value="1" checked>
+                        <label for="notification">{{__("plan.notifyMe")}}</label>
+                        @error('notification')
+                            <div class="text-red-700 text-xs italic">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endif
+
             </div>
-            <div>
-                <label for="owner_email" class="block text-gray-700">{{__("plan.mailDesc")}}</label>
-                <input id="owner_email" name="owner_email" type="email" class="@error('owner_email') border-red-500 @enderror w-full block text-black p-1 text-lg mb-2 border rounded" value="{{old('owner_email', $plan->owner_email)}}">
-                @error('owner_email')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="px-1">
-                <input id="allow_unsubscribe" name="allow_unsubscribe" type="checkbox" value="1" {{ old('allow_unsubscribe', $plan->allow_unsubscribe) ? 'checked' : '' }} > {{__("plan.allowUnsubscribe")}}
-                @error('allow_unsubscribe')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                @enderror
-            </div>
-            @if(!isset($plan->id))
-            <div class="px-1">
-                <input id="notification" name="notification" type="checkbox" value="1" {{ old('notification') ? 'checked' : '' }} > {{__("plan.notifyMe")}}
-                @error('notification')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                @enderror
-            </div>
-            @endif
-            </div>
-            <div class="mb-10"></div>
-            <button type="submit" class="my-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-                {{__('plan.save')}}
-            </button>
-            @if(isset($plan->id) && $plan->id > 0)
-                <a class="my-button" href="{{ route('plan.admin', $plan) }}">
+
+            <div class="">
+                <button type="submit" class="icon-button w-auto whitespace-nowrap">
+                    <span>Speichern</span>
+                    @include('partials.svg.save')
+                </button>
+
+                <a href="{{ route('plan.admin', $plan) }}" class="icon-button">
                     {{__('plan.cancel')}}
+                    @include('partials.svg.x')
                 </a>
-            @endif
+            </div>
+            
         </form>
+        
     </div>
 @endsection

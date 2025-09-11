@@ -31,6 +31,8 @@ class Plan extends Model implements
         'contact',
         'owner_email',
         'allow_unsubscribe',
+        'allow_subscribe',
+        'show_on_homepage',
     ];
 
     /**
@@ -42,6 +44,8 @@ class Plan extends Model implements
       fputcsv($csv, ['contact', $this->contact]);
       fputcsv($csv, ['owner_email', $this->owner_email]);
       fputcsv($csv, ['allow_unsubscribe', $this->allow_unsubscribe]);
+      fputcsv($csv, ['allow_subscribe', $this->allow_subscribe]);
+      fputcsv($csv, ['show_on_homepage', $this->show_on_homepage]);
     }
 
     /**

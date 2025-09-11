@@ -40,6 +40,14 @@
 }
 
 @layer utilities {
+  .bg-rockag {
+    background-image: url("../img/logo_rockag.png");
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 50%;
+  }
+
   .my-button {
     @apply bg-gray-300 hover:bg-gray-200 py-2 px-4 rounded mb-4 inline-block sm:w-auto;
     white-space: nowrap;
@@ -63,7 +71,7 @@
   }
 
   .icon-button {
-    @apply inline-block text-left relative px-3 py-2 rounded font-bold bg-ci-gray-dark text-ci-white transition-colors duration-300 hover:bg-ci-orange-light hover:text-ci-black cursor-pointer;
+    @apply inline-block text-left relative px-3 py-2 rounded font-bold text-sm md:text-base bg-ci-gray-dark text-ci-white transition-colors duration-300 hover:bg-ci-orange-light hover:text-ci-black cursor-pointer;
     padding-right: calc(((var(--spacing) * 2) * 2) + var(--size-button-icon));
 
     svg {
@@ -127,6 +135,22 @@
   .page-header-box-shadow {
     -webkit-box-shadow: 0px -40px 50px 25px var(--color-ci-orange-light);
     box-shadow: 0px -40px 50px 25px var(--color-ci-orange-light);
+  }
+
+  .section-header {
+    @apply font-tower-ruins text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  input[type=text], textarea {
+    @apply text-sm md:text-base text-ci-white outline-0 border-1 border-ci-gray-light bg-ci-gray-dark rounded py-1 md:py-2 px-2;
+
+    &[readonly] {
+      @apply text-ci-gray-light;
+    }
+
+    &.error {
+      @apply border-red-700;
+    }
   }
 }
 
