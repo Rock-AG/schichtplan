@@ -29,7 +29,7 @@
                 @method("put")
             @endif
 
-            <div class="md:grid md:grid-cols-2 @if($mode == 'edit') md:grid-rows-2 @else md:grid-rows-3 @endif md:gap-2">
+            <div class="md:grid md:grid-cols-2 md:grid-rows-3 md:gap-2 md:mb-2">
                 <div class="mb-2 md:mb-0">
                     <label for="title" class="block mb-1 text-sm md:text-base">{{__("plan.title")}}</label>
                     <input id="title" name="title" type="text" class="@error('title') error @enderror w-full" value="{{ old('title', $plan->title) }}">
@@ -38,7 +38,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-2 md:mb-0 md:row-span-4">
+                <div class="mb-2 md:mb-0 md:row-span-3">
                     <label for="description" class="block mb-1 text-sm md:text-base">{{__("plan.planDesc")}}</label>
                     <textarea id="description" rows="5" name="description" class="@error('description') error @enderror w-full field-sizing-content">{{old('description', $plan->description)}}</textarea>
                     @error('description')
@@ -108,10 +108,12 @@
                     @include('partials.svg.save')
                 </button>
 
-                <a href="{{ route('plan.admin', $plan) }}" class="icon-button">
-                    {{__('plan.cancel')}}
-                    @include('partials.svg.x')
-                </a>
+                @if($mode == "edit")
+                    <a href="{{ route('plan.admin', $plan) }}" class="icon-button">
+                        {{__('plan.cancel')}}
+                        @include('partials.svg.x')
+                    </a>
+                @endif
             </div>
             
         </form>
