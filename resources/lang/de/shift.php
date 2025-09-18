@@ -4,6 +4,8 @@ return [
     'noshifts' => 'Noch keine Schichten definiert',
     'createHeading' => 'Neue Schicht',
     'editHeading' => 'Schicht bearbeiten',
+    'heading_create' => 'Schicht erstellen',
+    'heading_edit' => 'Schicht bearbeiten',
     'type' => 'Kategorie',
     'noType' => 'Ohne Kategorie',
     'titleDescription' => 'Schichtname/-beschreibung',

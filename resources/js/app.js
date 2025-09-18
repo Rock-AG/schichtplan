@@ -17,6 +17,8 @@ function addEvents() {
         enableTime: true,
         time_24hr: true,
         locale: 'de',
+        altInput: true,
+        altFormat: 'd. F Y, H:i',
     });
 
     const el = document.getElementById('start');
@@ -32,6 +34,8 @@ function addEvents() {
                     enableTime: true,
                     time_24hr: true,
                     locale: 'de',
+                    altInput: true,
+                    altFormat: 'd. F Y, H:i',
                 });
             })
         );

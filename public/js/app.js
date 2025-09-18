@@ -2862,7 +2862,9 @@ function addEvents() {
     minDate: e,
     enableTime: true,
     time_24hr: true,
-    locale: 'de'
+    locale: 'de',
+    altInput: true,
+    altFormat: 'd. F Y, H:i'
   });
   var el = document.getElementById('start');
   if (el !== null) {
@@ -2875,7 +2877,9 @@ function addEvents() {
         minDate: e1,
         enableTime: true,
         time_24hr: true,
-        locale: 'de'
+        locale: 'de',
+        altInput: true,
+        altFormat: 'd. F Y, H:i'
       });
     });
   }

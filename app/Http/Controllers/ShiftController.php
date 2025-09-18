@@ -42,13 +42,13 @@ class ShiftController extends Controller
         $this->authorize("create", Shift::class);
         $data = $request->validated();
         $plan->shifts()->create($data);
-        if ($data['repetition_type'] != RepetitionType::None) {
-            for ($i = 0; $i < $data['repetition']-1; ++$i) {
-                $data['start'] = RepetitionType::timeDiff($data['repetition_type'], $data['start']);
-                $data['end'] = RepetitionType::timeDiff($data['repetition_type'], $data['end']);
-                $plan->shifts()->create($data);
-            }
-        }
+        // if ($data['repetition_type'] != RepetitionType::None) {
+        //     for ($i = 0; $i < $data['repetition']-1; ++$i) {
+        //         $data['start'] = RepetitionType::timeDiff($data['repetition_type'], $data['start']);
+        //         $data['end'] = RepetitionType::timeDiff($data['repetition_type'], $data['end']);
+        //         $plan->shifts()->create($data);
+        //     }
+        // }
         Session::flash('info', __('shift.successfullyCreated'));
         return redirect()->route('plan.admin', ['plan' => $plan]);
     }
