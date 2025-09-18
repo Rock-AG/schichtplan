@@ -19,7 +19,7 @@
     <div class="max-w-full mx-2 mb-4 flex-1">
 
         {{-- Header --}}
-        <h1 class="section-header">{{ __("plan.heading_" . $mode) }}</h1>
+        <h1 class="section-header mb-2">{{ __("plan.heading_" . $mode) }}</h1>
 
         {{-- Form--}}
         <form action="{{ $formAction }}" method="post">
@@ -103,14 +103,14 @@
             </div>
 
             <div class="">
-                <button type="submit" class="icon-button w-auto whitespace-nowrap">
-                    <span>Speichern</span>
+                <button type="submit" class="icon-button">
+                    <span>{{__('general.buttonSave')}}</span>
                     @include('partials.svg.save')
                 </button>
 
                 @if($mode == "edit")
                     <a href="{{ route('plan.admin', $plan) }}" class="icon-button">
-                        {{__('plan.cancel')}}
+                        {{__('general.buttonCancel')}}
                         @include('partials.svg.x')
                     </a>
                 @endif
