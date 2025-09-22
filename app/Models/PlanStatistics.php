@@ -28,7 +28,7 @@ class PlanStatistics
             $this->subscriptionsAvailable += $shift->team_size;
             $this->subscriptionsFull += $subscriptionsCount;
             
-            if ($shift->team_size == $subscriptionsCount) {
+            if ($shift->team_size <= $subscriptionsCount) {
                 $this->shiftsFull += 1;
             }
         });
