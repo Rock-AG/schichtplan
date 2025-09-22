@@ -20,6 +20,8 @@ class Plan extends Model implements
 
     use  Authorizable, HasFactory, Notifiable;
 
+    private PlanStatistics $statistics;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -191,5 +193,14 @@ class Plan extends Model implements
         else {
             return $start->isoFormat("OD. MMMM YYYY") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
         }
+    }
+
+    public function getStatistics(): PlanStatistics
+    {
+        if (!isset($this->statistics)) {
+            $this->statistics = new PlanStatistics($this);
+        }
+
+        return $this->statistics;
     }
 }

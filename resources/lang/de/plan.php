@@ -8,6 +8,7 @@ return [
     'planAdminBasicSettingsTitle' => 'Grundeinstellungen',
     'planAdminShiftsTitle' => 'Schichten',
     'planAdminShiftsIntro' => 'Gruppiert nach Kategorie, sortiert nach Datum und Uhrzeit',
+    'planAdminSubscriptionsTitle' => 'Helfer*innen',
     'heading_create' => 'Neuen Schichtplan erstellen',
     'heading_edit' => 'Schichtplan bearbeiten',
     'title' => 'Titel',
@@ -37,6 +38,7 @@ return [
     'publish' => 'Veröffentlichen',
     'toPublishedPage' => 'Zur Helferseite',
     'show_subscriptions' => 'Helfer*innen anzeigen',
+    'show_edit_subscriptions_link' => 'Anzeigen / bearbeiten',
     'subscribed' => 'Eingetragen',
     'admin' => 'Plan bearbeiten',
     'submit' => 'Abschicken',
@@ -63,4 +65,10 @@ return [
     'importMimetype' => 'Nur csv file sind erlaubt.',
     'importMax' => 'Das csv darf maximal 1mb gross sein.',
     'documentation' => '<a href="//docs.immerda.ch/de/services/shifts/">Hilfe</a>',
+    'statistics' => [
+        'subscriptionsAvailable' => 'Zu besetzende Positionen',
+        'subscriptionsFull' => 'Bereits besetzte Positionen',
+        'shiftsAvailable' => 'Anzahl Schichten insgesamt',
+        'shiftsFull' => 'Bereits vollständig gefüllte Schichten',
+    ],
 ];

@@ -9,6 +9,7 @@ use App\Http\Requests\StoreShiftRequest;
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Http\Requests\UpdatePlanRequest;
 use App\Models\Plan;
+use App\Models\PlanStatistics;
 use App\Models\Shift;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;

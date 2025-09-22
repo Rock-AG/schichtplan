@@ -78,6 +78,34 @@
             </div>
         </div>
 
+        {{-- Subscription overview + link --}}
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+            <h2 class="section-header">{{ __('plan.planAdminSubscriptionsTitle') }}</h2>
+            <div>
+                <a class="icon-button w-auto" href="{{route('plan.admin_subscriptions', ['plan' => $plan])}}">
+                <span>{{ __('plan.show_edit_subscriptions_link') }}</span>
+                @include('partials.svg.pencil')
+            </a>
+            </div>
+        </div>
+        <div class="md:table md:max-w-3/4 lg:max-w-1/2 mb-6 md:mb-12">
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsAvailable') }}</div>
+                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsAvailable }}</div>
+            </div>
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsFull') }}</div>
+                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsFull }}</div>
+            </div>
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsFull') }}</div>
+                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsFull }}</div>
+            </div>
+            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsAvailable') }}</div>
+                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsAvailable }}</div>
+            </div>
+        </div>
 
         {{-- Shifts header --}}
         <h2 class="section-header mb-2">{{ __('plan.planAdminShiftsTitle') }}</h2>
