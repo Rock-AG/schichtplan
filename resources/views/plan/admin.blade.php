@@ -8,25 +8,21 @@
 
         @include('partials.flash')
 
-        <div class="w-full mb-6 md:mb-12">
-
-            {{-- Header + Intro-Text --}}
-            <div class="md:max-w-3/4 lg:max-w-1/2">
-                <h1 class="section-header mb-2">{{ __('plan.planAdminTitle') }}</h1>
-                <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntro') }}</p>
-                <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntroLinkDescription') }}</p>
-                
-                <div class="flex flex-col md:flex-row gap-2 md:items-center">
-                    <input class="md:flex-3" type="text" id="plan-view-link" readonly aria-readonly="true" value="{{route('plan.show', ['plan' => $plan])}}">
-                    <div>
-                        <button type="submit" class="icon-button w-auto whitespace-nowrap js-copy-link" data-input-id="plan-view-link" data-success-text="{{ __('plan.copyLinkSuccess') }}">
-                            <span>Link kopieren</span>
-                            @include('partials.svg.copy')
-                        </button>
-                    </div>
+        {{-- Header + Intro-Text --}}
+        <div class="w-full mb-6 md:mb-12 md:max-w-3/4 lg:max-w-1/2">
+            <h1 class="section-header mb-2">{{ __('plan.planAdminTitle') }}</h1>
+            <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntro') }}</p>
+            <p class="text-sm md:text-base mb-2">{{ __('plan.planAdminIntroLinkDescription') }}</p>
+            
+            <div class="flex flex-col md:flex-row gap-2 md:items-center">
+                <input class="md:flex-3" type="text" id="plan-view-link" readonly aria-readonly="true" value="{{route('plan.show', ['plan' => $plan])}}">
+                <div>
+                    <button type="submit" class="icon-button w-auto whitespace-nowrap js-copy-link" data-input-id="plan-view-link" data-success-text="{{ __('plan.copyLinkSuccess') }}">
+                        <span>Link kopieren</span>
+                        @include('partials.svg.copy')
+                    </button>
                 </div>
             </div>
-            
         </div>
         
         {{-- Basic settings --}}
