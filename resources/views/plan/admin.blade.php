@@ -8,7 +8,7 @@
 
         @include('partials.flash')
 
-        <div class="w-full flex flex-col md:flex-row justify-between mb-6 md:mb-12">
+        <div class="w-full mb-6 md:mb-12">
 
             {{-- Header + Intro-Text --}}
             <div class="md:max-w-3/4 lg:max-w-1/2">
