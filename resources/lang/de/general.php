@@ -5,4 +5,5 @@ return [
     "actions" => "Aktionen",
     "buttonSave" => "Speichern",
     "buttonCancel" => "Abbrechen",
+    "buttonBack" => "Zurück",
 ];

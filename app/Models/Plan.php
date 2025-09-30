@@ -92,6 +92,49 @@ class Plan extends Model implements
     }
 
     /**
+     * Get the associated shifts for the plan, ordered by the specified field
+     * 
+     * @param string $orderBy The field to order the shifts by
+     * @param string $search The search term
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function getShifts($orderBy = "title", $search = "")
+    {
+        $out = $this->hasMany(Shift::class);
+
+        switch ($orderBy) {
+            case "title":
+                $out
+                    ->orderBy("title")
+                    ->orderBy("start");
+                break;
+
+            case 'start':
+                $out
+                    ->orderBy("start")
+                    ->orderBy("title");
+                break;
+            
+            case "type":
+                $out
+                    ->orderByRaw('IF (`type` = "", 1, 0), `type`')
+                    ->orderBy("title")
+                    ->orderBy("start");
+                break;
+            
+            default:
+                $out = $this->shifts();
+                break;
+        }
+
+        if ($search != "") {
+            $out->where('title', 'like', '%' . $search . '%');
+        }
+
+        return $out;
+    }
+
+    /**
      * Check if any of the associated shifts has a specific type
      * @return bool
      */

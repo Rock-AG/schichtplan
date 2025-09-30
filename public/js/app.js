@@ -2888,8 +2888,8 @@ function addEvents() {
 /**
  * Add a confirmation dialog before deleting a shift
  */
-function deleteShift() {
-  var forms = document.querySelectorAll('form.delete-shift');
+function deleteWithConfirm() {
+  var forms = document.querySelectorAll('form.delete-with-confirm');
   if (forms.length > 0) {
     forms.forEach(function (form) {
       var msg = form.dataset['confirmDeleteMsg'];
@@ -2902,7 +2902,7 @@ function deleteShift() {
   }
 }
 document.addEventListener('DOMContentLoaded', addEvents);
-document.addEventListener('DOMContentLoaded', deleteShift);
+document.addEventListener('DOMContentLoaded', deleteWithConfirm);
 function openImport() {
   document.getElementById('importForm').style['display'] = 'block';
   this.style['display'] = 'none';

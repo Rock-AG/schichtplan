@@ -2,7 +2,9 @@
 return [
     'nameDesc' => 'Name/Alias (öffentlich)',
     'name' => 'Name',
-    'phone' => 'Telefon',
+    'nickname' => 'Spitzname (öffentlich)',
+    'fullName' => 'Vollständiger Name',
+    'phone' => 'Telefonnummer',
     'email' => 'E-Mail-Adresse',
     'comment' => 'Kommentar',
     'save' => 'Speichern',
@@ -33,5 +35,7 @@ return [
     'notifyMe' => 'Errinnere mich einen Tag bevor meine Schicht beginnt.',
     'reminder' => 'Du hast morgen eine Schicht',
     'reminderBody' => "Vergiss nicht die Schicht(en), für die du dich morgen eingetragen hast. Infos findest du im entsprechenden Schichtplan.",
-    "validLanguage" => "Ungültige Sprache"
+    "validLanguage" => "Ungültige Sprache",
+    "confirmDelete" => "Bist du sicher, dass du die Anmeldung löschen willst?",
+    "actions" => "Aktionen",
 ];

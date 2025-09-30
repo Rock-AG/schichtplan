@@ -250,16 +250,21 @@ class PlanController extends Controller
     }
 
     /**
-     * Display an overview of shifts for a specified plan.
+     * Display an overview of subscriptions for a specified plan.
      *
      * @param Plan $plan
      * @return Response
      */
-    public function admin_subscriptions(Plan $plan)
+    public function admin_subscriptions(Request $request, Plan $plan)
     {
         $this->auth($plan);
         $this->authorize("view", $plan);
-        return view('plan.admin_subscriptions')->with(['plan' => $plan]);
+
+        $orderBy = $request->input('orderBy') ?? "title";
+        $search = $request->input('search') ?? "";
+        $shifts = $plan->getShifts($orderBy, $search)->get();
+
+        return view('plan.admin_subscriptions')->with(['plan' => $plan, 'shifts' => $shifts]);
     }
 
     /**

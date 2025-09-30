@@ -84,4 +84,19 @@ class Shift extends Model
             return 'red';
         }
     }
+
+    public function getTimespan(): string
+    {
+        $start = \Illuminate\Support\Facades\Date::parse($this->start);
+        $end = \Illuminate\Support\Facades\Date::parse($this->end);
+
+        // Same day
+        if ($start->isSameDay($end)) {
+            return $start->isoFormat("DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("HH:mm");
+        }
+        // Different day
+        else {
+            return $start->isoFormat("DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("DD.MM.YYYY HH:mm");
+        }
+    }
 }

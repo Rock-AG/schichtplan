@@ -97,6 +97,15 @@
       }
     }
 
+    &.no-text {
+      padding-left: 0;
+      height: 40px;
+      
+      & > span {
+        display: none;
+      }
+    }
+
     > .burg {
       display: block;
       position: absolute;

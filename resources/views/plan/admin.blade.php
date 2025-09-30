@@ -25,82 +25,94 @@
             </div>
         </div>
         
-        {{-- Basic settings --}}
-        <div class="flex flex-wrap items-center gap-2 mb-2">
-            <h2 class="section-header">{{ __('plan.planAdminBasicSettingsTitle') }}</h2>
-            <div>
-                <a class="icon-button w-auto" href="{{route('plan.edit', ['plan' => $plan])}}">
-                    <span>{{ __('plan.editSettings') }}</span>
-                    @include('partials.svg.pencil')
-                </a>
-            </div>
-        </div>
-        <div class="md:table md:max-w-3/4 lg:max-w-1/2 mb-6 md:mb-12">
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.title') }}</div>
-                <div class="md:table-cell md:p-2">{{ $plan->title }}</div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.planDesc') }}</div>
-                <div class="md:table-cell md:p-2">{{ $plan->description }}</div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.contactDesc') }}</div>
-                <div class="md:table-cell md:p-2">{{ $plan->contact }}</div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.showOnHomepage') }}</div>
-                <div class="md:table-cell md:p-2">
-                    <div class="w-6 mt-1 md:m-0">
-                        @include('partials.svg.' . ($plan->show_on_homepage == 1 ? 'checkmark' : 'cross'))
-                    </div>
-                </div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowSubscribe') }}</div>
-                <div class="md:table-cell md:p-2">
-                    <div class="w-6 mt-1 md:m-0">
-                        @include('partials.svg.' . ($plan->allow_subscribe == 1 ? 'checkmark' : 'cross'))
-                    </div>
-                </div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowUnsubscribe') }}</div>
-                <div class="md:table-cell md:p-2">
-                    <div class="w-6 mt-1 md:m-0">
-                        @include('partials.svg.' . ($plan->allow_unsubscribe == 1 ? 'checkmark' : 'cross'))
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="lg:grid lg:grid-cols-2 lg:gap-4">
 
-        {{-- Subscription overview + link --}}
-        <div class="flex flex-wrap items-center gap-2 mb-2">
-            <h2 class="section-header">{{ __('plan.planAdminSubscriptionsTitle') }}</h2>
             <div>
-                <a class="icon-button w-auto" href="{{route('plan.admin_subscriptions', ['plan' => $plan])}}">
-                <span>{{ __('plan.show_edit_subscriptions_link') }}</span>
-                @include('partials.svg.pencil')
-            </a>
+
+                {{-- Basic settings --}}
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <h2 class="section-header">{{ __('plan.planAdminBasicSettingsTitle') }}</h2>
+                    <div>
+                        <a class="icon-button w-auto" href="{{route('plan.edit', ['plan' => $plan])}}">
+                            <span>{{ __('plan.editSettings') }}</span>
+                            @include('partials.svg.pencil')
+                        </a>
+                    </div>
+                </div>
+                <div class="md:table md:max-w-3/4 lg:max-w-full mb-6 md:mb-12">
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.title') }}</div>
+                        <div class="md:table-cell md:p-2">{{ $plan->title }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.planDesc') }}</div>
+                        <div class="md:table-cell md:p-2">{{ $plan->description }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.contactDesc') }}</div>
+                        <div class="md:table-cell md:p-2">{{ $plan->contact }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.showOnHomepage') }}</div>
+                        <div class="md:table-cell md:p-2">
+                            <div class="w-6 mt-1 md:m-0">
+                                @include('partials.svg.' . ($plan->show_on_homepage == 1 ? 'checkmark' : 'cross'))
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowSubscribe') }}</div>
+                        <div class="md:table-cell md:p-2">
+                            <div class="w-6 mt-1 md:m-0">
+                                @include('partials.svg.' . ($plan->allow_subscribe == 1 ? 'checkmark' : 'cross'))
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell md:min-w-[30%] text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.allowUnsubscribe') }}</div>
+                        <div class="md:table-cell md:p-2">
+                            <div class="w-6 mt-1 md:m-0">
+                                @include('partials.svg.' . ($plan->allow_unsubscribe == 1 ? 'checkmark' : 'cross'))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        <div class="md:table md:max-w-3/4 lg:max-w-1/2 mb-6 md:mb-12">
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsAvailable') }}</div>
-                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsAvailable }}</div>
+
+            <div>
+
+                {{-- Subscription overview + link --}}
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <h2 class="section-header">{{ __('plan.planAdminSubscriptionsTitle') }}</h2>
+                    <div>
+                        <a class="icon-button w-auto" href="{{route('plan.admin_subscriptions', ['plan' => $plan])}}">
+                        <span>{{ __('plan.show_edit_subscriptions_link') }}</span>
+                        @include('partials.svg.pencil')
+                    </a>
+                    </div>
+                </div>
+                <div class="md:table md:max-w-3/4 lg:max-w-full mb-6 md:mb-12">
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsAvailable') }}</div>
+                        <div class="md:table-cell font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsAvailable }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsFull') }}</div>
+                        <div class="md:table-cell font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsFull }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsFull') }}</div>
+                        <div class="md:table-cell font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsFull }}</div>
+                    </div>
+                    <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
+                        <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsAvailable') }}</div>
+                        <div class="md:table-cell font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsAvailable }}</div>
+                    </div>
+                </div>
+
             </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.subscriptionsFull') }}</div>
-                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->subscriptionsFull }}</div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsFull') }}</div>
-                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsFull }}</div>
-            </div>
-            <div class="md:table-row odd:bg-table-odd even:bg-table-even p-2">
-                <div class="md:table-cell whitespace-nowrap text-xs md:text-base align-top font-bold md:p-2">{{ __('plan.statistics.shiftsAvailable') }}</div>
-                <div class="md:table-cell text-lg font-bold md:text-right md:p-2 md:px-4">{{ $plan->getStatistics()->shiftsAvailable }}</div>
-            </div>
+
         </div>
 
         {{-- Shifts header --}}
@@ -133,10 +145,10 @@
                         <div class="w-full md:table text-xs md:text-sm lg:text-base">
 
                             <div class="hidden md:table-header-group">
-                                <div class="table-cell italic whitespace-nowrap p-2">{{ __('shift.titleDescription') }}</div>
-                                <div class="table-cell italic whitespace-nowrap p-2">{{ __('shift.dateTime') }}</div>
-                                <div class="table-cell italic whitespace-nowrap p-2">{{ __('shift.team_sizeShort') }}</div>
-                                <div class="table-cell italic whitespace-nowrap text-right w-1 p-2">{{ __('shift.action') }}</div>
+                                <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.titleDescription') }}</div>
+                                <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.dateTime') }}</div>
+                                <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.team_sizeShort') }}</div>
+                                <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd w-1 p-2">{{ __('shift.action') }}</div>
                             </div>
 
                             @foreach($shifts as $shift)
@@ -162,7 +174,7 @@
                                                 <span>Bearbeiten</span>
                                                 @include('partials.svg.pencil')
                                             </a>
-                                            <form method="post" action="{{route('plan.shift.destroy', ['plan' => $plan, 'shift' => $shift])}}" class="delete-shift" data-confirm-delete-msg="{{ __('shift.confirmDelete') }}">
+                                            <form method="post" action="{{route('plan.shift.destroy', ['plan' => $plan, 'shift' => $shift])}}" class="delete-with-confirm" data-confirm-delete-msg="{{ __('shift.confirmDelete') }}">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="icon-button w-auto">

@@ -1,7 +1,8 @@
 <?php
 return [
     'add' => 'Schicht hinzufügen',
-    'noshifts' => 'Noch keine Schichten definiert',
+    'noshifts' => 'Es wurden noch keine Schichten angelegt.',
+    'noshiftsFromSearch' => 'Es existieren keine Schichten zu dem eingegebenen Suchbegriff',
     'createHeading' => 'Neue Schicht',
     'editHeading' => 'Schicht bearbeiten',
     'heading_create' => 'Schicht erstellen',
@@ -43,5 +44,15 @@ return [
     'daily' => 'Täglich',
     'hourly' => 'Stündlich',
     'weekly' => 'Wöchentlich',
-    'confirmDelete' => 'Bist du sicher, dass du die Schicht löschen willst?'
+    'confirmDelete' => 'Bist du sicher, dass du die Schicht löschen willst?',
+    'orderByButtonsIntro' => 'Schichten sortieren nach:',
+    'searchFormIntro' => 'Schichtname enthält:',
+    'orderByTitle' => 'Titel',
+    'orderByStart' => 'Startdatum/-zeit',
+    'orderByType' => 'Kategorie',
+    'searchButton' => 'Suchen',
+    'clearSearchButton' => 'Suchbegriff löschen',
+    'noSubscriptions' => 'Für diese Schicht sind noch keine Anmeldungen vorhanden',
+    'editSubscription' => 'Bearbeiten',
+    'deleteSubscription' => 'Löschen',
 ];
