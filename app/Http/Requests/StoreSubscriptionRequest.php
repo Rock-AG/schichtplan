@@ -15,10 +15,11 @@ class StoreSubscriptionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:60',
+            'nickname' => 'required|max:60',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:100',
-            'phone' => 'required|regex:/\+?[0-9\s]{8,20}/',
-            'notification' => 'boolean',
+            'phone' => 'required|regex:/^\+?[0-9\s]{8,20}$/',
+            // 'notification' => 'boolean',
             'comment' => 'max:500',
             'locale' => 'required|in:de,en,es'
         ];
@@ -31,6 +32,9 @@ class StoreSubscriptionRequest extends FormRequest
     public function messages()
     {
         return [
+            'nickname.required' => __("validation.required.nickname"),
+            'nickname.max' => __("validation.nicknameMax"),
+
             'name.required' => __("validation.required.name"),
             'name.max' => __("validation.nameMax"),
 

@@ -1101,6 +1101,11 @@
       padding-top: calc(var(--spacing) * 8);
     }
   }
+  .md\:col-start-2 {
+    @media (width >= 48rem) {
+      grid-column-start: 2;
+    }
+  }
   .md\:row-span-3 {
     @media (width >= 48rem) {
       grid-row: span 3 / span 3;
@@ -1109,6 +1114,11 @@
   .md\:row-span-5 {
     @media (width >= 48rem) {
       grid-row: span 5 / span 5;
+    }
+  }
+  .md\:row-start-1 {
+    @media (width >= 48rem) {
+      grid-row-start: 1;
     }
   }
   .md\:m-0 {
@@ -1174,6 +1184,11 @@
   .md\:mb-6 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 6);
+    }
+  }
+  .md\:mb-8 {
+    @media (width >= 48rem) {
+      margin-bottom: calc(var(--spacing) * 8);
     }
   }
   .md\:mb-12 {
@@ -1294,6 +1309,11 @@
   .md\:grid-rows-3 {
     @media (width >= 48rem) {
       grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-rows-4 {
+    @media (width >= 48rem) {
+      grid-template-rows: repeat(4, minmax(0, 1fr));
     }
   }
   .md\:flex-col {
@@ -1455,29 +1475,9 @@
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
-  .xl\:grid {
-    @media (width >= 80rem) {
-      display: grid;
-    }
-  }
   .xl\:max-w-2xl {
     @media (width >= 80rem) {
       max-width: var(--container-2xl);
-    }
-  }
-  .xl\:max-w-full {
-    @media (width >= 80rem) {
-      max-width: 100%;
-    }
-  }
-  .xl\:grid-cols-2 {
-    @media (width >= 80rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .xl\:gap-4 {
-    @media (width >= 80rem) {
-      gap: calc(var(--spacing) * 4);
     }
   }
   .xl\:py-8 {

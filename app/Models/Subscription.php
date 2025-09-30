@@ -20,6 +20,7 @@ class Subscription extends Model
      * @var string[]
      */
     protected $fillable = [
+        'nickname',
         'name',
         'phone',
         'email',
@@ -32,7 +33,7 @@ class Subscription extends Model
      * Export a subscription
      */
     public function export() {
-        return ['subscribed','','','','','','','', $this->name, $this->phone,
+        return ['subscribed','','','','','','','', $this->nickname, $this->name, $this->phone,
           $this->email, $this->comment, $this->notification, $this->locale];
     }
 

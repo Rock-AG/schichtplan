@@ -29,7 +29,7 @@ class SubscriptionController extends Controller
             'plan' => $plan,
             'shift' => $shift,
             'subscription' => $subscription,
-            'locale' => session('locale', 'en'),
+            'locale' => session('locale', 'de'),
             'cancelLink' => URL::route('plan.show', $plan->view_id)
         ]);
     }
@@ -115,7 +115,7 @@ class SubscriptionController extends Controller
             'plan' => $plan,
             'shift' => $shift,
             'subscription' => $subscription,
-            'locale' => session('locale', 'en'),
+            'locale' => session('locale', 'de'),
             'cancelLink' => URL::route('plan.admin_subscriptions', $plan->edit_id)
         ]);
     }
