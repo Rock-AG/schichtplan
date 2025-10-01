@@ -3,6 +3,7 @@ return [
     'nameDesc' => 'Name/Alias (öffentlich)',
     'name' => 'Vollständiger Name',
     'nickname' => 'Spitzname (wird öffentlich angezeigt)',
+    'nicknameShort' => 'Spitzname',
     'fullName' => 'Vollständiger Name',
     'phone' => 'Telefonnummer',
     'email' => 'E-Mail-Adresse',

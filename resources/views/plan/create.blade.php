@@ -32,7 +32,7 @@
             <div class="md:grid md:grid-cols-2 md:grid-rows-3 md:gap-2 md:mb-2">
                 <div class="mb-2 md:mb-0">
                     <label for="title" class="block mb-1 text-sm md:text-base">{{__("plan.title")}}</label>
-                    <input id="title" name="title" type="text" class="@error('title') error @enderror w-full" value="{{ old('title', $plan->title) }}">
+                    <input id="title" name="title" placeholder="{{__('plan.title')}}" type="text" class="@error('title') error @enderror w-full" value="{{ old('title', $plan->title) }}">
                     @error('title')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -40,7 +40,7 @@
 
                 <div class="mb-2 md:mb-0 md:row-span-3">
                     <label for="description" class="block mb-1 text-sm md:text-base">{{__("plan.planDesc")}}</label>
-                    <textarea id="description" rows="5" name="description" class="@error('description') error @enderror w-full field-sizing-content">{{old('description', $plan->description)}}</textarea>
+                    <textarea id="description" rows="5" name="description" placeholder="{{__('plan.planDesc')}}" class="@error('description') error @enderror w-full field-sizing-content">{{old('description', $plan->description)}}</textarea>
                     @error('description')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -48,7 +48,7 @@
 
                 <div class="mb-2 md:mb-0">
                     <label for="contact" class="block mb-1 text-sm md:text-base">{{__("plan.contactDesc")}}</label>
-                    <input id="contact" name="contact" type="text" class="@error('contact') error @enderror w-full" value="{{ old('contact', $plan->contact) }}">
+                    <input id="contact" name="contact" placeholder="{{__('plan.contactDesc')}}" type="text" class="@error('contact') error @enderror w-full" value="{{ old('contact', $plan->contact) }}">
                     @error('contact')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -56,7 +56,7 @@
 
                 <div class="mb-2 md:mb-0">
                     <label for="owner_email" class="block mb-1 text-sm md:text-base">{{__("plan.mailDesc")}}</label>
-                    <input id="owner_email" name="owner_email" type="text" class="@error('owner_email') error @enderror w-full" value="{{ old('owner_email', $plan->owner_email) }}" @if($mode == 'edit') readonly @endif>
+                    <input id="owner_email" name="owner_email" placeholder="{{__('plan.mailDesc')}}" type="text" class="@error('owner_email') error @enderror w-full" value="{{ old('owner_email', $plan->owner_email) }}" @if($mode == 'edit') readonly @endif>
                     @error('owner_email')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror

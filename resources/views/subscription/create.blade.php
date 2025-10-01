@@ -39,7 +39,7 @@
 
                 <div class="mb-2 md:mb-0">
                     <label for="nickname" class="block mb-1 text-sm md:text-base">{{__("subscription.nickname")}}</label>
-                    <input id="nickname" name="nickname" type="text" class="@error('nickname') error @enderror w-full" value="{{ old('nickname', $subscription->nickname) }}">
+                    <input id="nickname" name="nickname" placeholder="{{__('subscription.nicknameShort')}}" type="text" class="@error('nickname') error @enderror w-full" value="{{ old('nickname', $subscription->nickname) }}">
                     @error('nickname')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -47,7 +47,7 @@
                 
                 <div class="mb-2 md:mb-0">
                     <label for="name" class="block mb-1 text-sm md:text-base">{{__("subscription.name")}}</label>
-                    <input id="name" name="name" type="text" class="@error('name') error @enderror w-full" value="{{ old('name', $subscription->name) }}">
+                    <input id="name" name="name" placeholder="{{__('subscription.name')}}" type="text" class="@error('name') error @enderror w-full" value="{{ old('name', $subscription->name) }}">
                     @error('name')
                     <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -55,7 +55,7 @@
                 
                 <div class="mb-2 md:mb-0">
                     <label for="phone" class="block mb-1 text-sm md:text-base">{{__("subscription.phone")}}</label>
-                    <input id="phone" name="phone" type="text" class="@error('phone') error @enderror w-full" value="{{ old('phone', $subscription->phone) }}">
+                    <input id="phone" name="phone" placeholder="{{__('subscription.phone')}}" type="text" class="@error('phone') error @enderror w-full" value="{{ old('phone', $subscription->phone) }}">
                     @error('phone')
                     <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -63,7 +63,7 @@
                 
                 <div class="mb-2 md:mb-0">
                     <label for="email" class="block mb-1 text-sm md:text-base">{{__("subscription.email")}}</label>
-                    <input id="email" name="email" type="text" class="@error('email') error @enderror w-full" value="{{ old('email', $subscription->email) }}">
+                    <input id="email" name="email" placeholder="{{__('subscription.email')}}" type="text" class="@error('email') error @enderror w-full" value="{{ old('email', $subscription->email) }}">
                     @error('email')
                     <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
@@ -71,7 +71,7 @@
                 
                 <div class="mb-2 md:mb-0 md:row-span-3 md:col-start-2 md:row-start-1">
                     <label for="comment" class="block mb-1 text-sm md:text-base">{{__("subscription.comment")}}</label>
-                    <textarea id="comment" rows="6" name="comment" class="@error('comment') error @enderror w-full field-sizing-content">{{old('comment', $subscription->comment)}}</textarea>
+                    <textarea id="comment" rows="6" name="comment" placeholder="{{__('subscription.comment')}}" class="@error('comment') error @enderror w-full field-sizing-content">{{old('comment', $subscription->comment)}}</textarea>
                     @error('comment')
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
