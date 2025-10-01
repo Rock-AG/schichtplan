@@ -91,6 +91,13 @@
             </div>
             --}}
 
+            {{-- Privacy text --}}
+            @if($mode == "create")
+                <div class="mb-2 mt-4">
+                    <p class="text-sm">{!! __('shift.privacyText') !!}</p>
+                </div>
+            @endif
+
             {{-- Submit / cancel buttons --}}
             <div class="flex gap-2 mt-4">
                 @if($mode == "edit")

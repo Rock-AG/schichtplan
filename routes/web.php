@@ -139,3 +139,7 @@ Route::get('/s/{plan:view_id}/shift/{shift}/remove', [SubscriptionController::cl
 
 Route::post('/s/{plan:view_id}/shift/{shift}/remove/{confirmation}', [SubscriptionController::class, 'doConfirmRemove'])->name('plan.subscription.doConfirmRemove');
 Route::get('/s/{plan:view_id}/shift/{shift}/remove/{confirmation}', [SubscriptionController::class, 'confirmRemove'])->name('plan.subscription.confirmRemove');
+
+Route::get('/impressum', function() {
+  return view('imprint');
+})->name('imprint');
