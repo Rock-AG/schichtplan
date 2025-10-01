@@ -22,7 +22,7 @@ return [
     'login' => 'Einschreibungen verwalten',
     'successfullyDestroyed' => 'Anmeldung gelöscht',
     'successfullyUpdated' => 'Anmeldung aktualisiert',
-    'successfullyCreated' => 'Anmeldung erstellt',
+    'successfullyCreated' => 'Vielen Dank für deine Anmeldung!',
     'enoughSubscription' => 'Alle Schichten sind bereits besetzt',
     'removeHelp' => 'Gib deine E-Mail-Adresse an, um dich auszutragen.',
     'confirmRemoveHelp' => 'Ja, ich möchte mich für diese Schicht austragen: ',
