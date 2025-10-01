@@ -55,4 +55,6 @@ return [
     'noSubscriptions' => 'Für diese Schicht sind noch keine Anmeldungen vorhanden',
     'editSubscription' => 'Bearbeiten',
     'deleteSubscription' => 'Löschen',
+    'subscribe' => 'Anmelden',
+    'unsubscribe' => 'Absagen',
 ];

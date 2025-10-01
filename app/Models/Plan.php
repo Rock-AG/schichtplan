@@ -222,19 +222,19 @@ class Plan extends Model implements
 
         // Same day
         if ($start->isSameDay($end)) {
-            return $start->isoFormat("OD. MMMM YYYY");
+            return $start->isoFormat("dd. OD. MMMM YYYY");
         }
         // Same month
         elseif ($start->isSameMonth($end)) {
-            return $start->isoFormat("OD.") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+            return $start->isoFormat("dd. OD.") . ' - ' . $end->isoFormat("dd. OD. MMMM YYYY");
         }
         // Same year
         elseif ($start->isSameYear($end)) {
-            return $start->isoFormat("OD. MMMM") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+            return $start->isoFormat("dd. OD. MMMM") . ' - ' . $end->isoFormat("dd. OD. MMMM YYYY");
         }
         // Different year
         else {
-            return $start->isoFormat("OD. MMMM YYYY") . ' - ' . $end->isoFormat("OD. MMMM YYYY");
+            return $start->isoFormat("dd. OD. MMMM YYYY") . ' - ' . $end->isoFormat("dd. OD. MMMM YYYY");
         }
     }
 

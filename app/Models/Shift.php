@@ -92,11 +92,11 @@ class Shift extends Model
 
         // Same day
         if ($start->isSameDay($end)) {
-            return $start->isoFormat("DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("HH:mm");
+            return $start->isoFormat("dd. DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("HH:mm");
         }
         // Different day
         else {
-            return $start->isoFormat("DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("DD.MM.YYYY HH:mm");
+            return $start->isoFormat("dd.. DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("dd. DD.MM.YYYY HH:mm");
         }
     }
 }

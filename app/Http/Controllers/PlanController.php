@@ -47,7 +47,9 @@ class PlanController extends Controller
         // no specific authorization - everybody can create a plan
         // validate the request
         $data = $request->validated();
-	$data['allow_unsubscribe'] = $request->has('allow_unsubscribe');
+	    $data['allow_unsubscribe'] = $request->has('allow_unsubscribe');
+	    $data['allow_subscribe'] = $request->has('allow_subscribe');
+	    $data['show_on_homepage'] = $request->has('show_on_homepage');
         $plan = Plan::create($data);
         // If user enables notification, she/he will get the links to edit and view the plan into the inbox
         if($request->has('notification')) {
@@ -66,7 +68,11 @@ class PlanController extends Controller
      */
     public function show(Plan $plan)
     {
-        return view('plan.show', ['plan' => $plan]);
+        $shiftsGroupedByCategory = $plan->shifts->groupBy(function(Shift $item) {
+            return $item->type !== '' ? $item->type : __('shift.noType');
+        });
+
+        return view('plan.show', ['plan' => $plan, 'shiftsGroupedByCategory' => $shiftsGroupedByCategory]);
     }
 
     /**
@@ -292,7 +298,9 @@ class PlanController extends Controller
         $this->auth($plan);
         $this->authorize("update", $plan);
         $data = $request->validated();
-	$data['allow_unsubscribe'] = $request->has('allow_unsubscribe');
+	    $data['allow_unsubscribe'] = $request->has('allow_unsubscribe');
+	    $data['allow_subscribe'] = $request->has('allow_subscribe');
+	    $data['show_on_homepage'] = $request->has('show_on_homepage');
         $plan->update($data);
         // redirect to shifts overview
         Session::flash('info', __('plan.successfullyUpdated'));
@@ -324,20 +332,20 @@ class PlanController extends Controller
         $hours = $start->diffInHours($end);
         $res = "";
         if($start->isSameDay($end)) {
-            $res .= $start->isoFormat("OD. MMMM YYYY | HH:mm");
+            $res .= $start->isoFormat("dd. OD. MMMM YYYY | HH:mm");
             $res .= " - ";
             $res .= $end->isoFormat('HH:mm');
         } elseif($start->isSameYear($end)) {
-            $res .= $start->isoFormat("OD. MMMM YYYY | HH:mm");
+            $res .= $start->isoFormat("dd. OD. MMMM YYYY | HH:mm");
             $res .= "&nbsp; -";
             $res .= $inline ? "&nbsp;" : "<br>";
-            $res .= $end->isoFormat("OD. MMMM YYYY | HH:mm");
+            $res .= $end->isoFormat("dd. OD. MMMM YYYY | HH:mm");
         } else {
-            $res .= $start->isoFormat("OD. MMMM YYYY HH:mm");
+            $res .= $start->isoFormat("dd. OD. MMMM YYYY HH:mm");
             $res .= $inline ? "&nbsp;" : "<br>";
             $res .= " - ";
             $res .= $inline ? "&nbsp;" : "<br>";
-            $res .= $end->isoFormat("OD. MMMM YYYY | HH:mm");
+            $res .= $end->isoFormat("dd. OD. MMMM YYYY | HH:mm");
         }
         return $res;
     }

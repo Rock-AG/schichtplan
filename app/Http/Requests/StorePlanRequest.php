@@ -19,6 +19,8 @@ class StorePlanRequest extends FormRequest
             'contact' => 'max:500',
             'owner_email' => 'required|email',
             'allow_unsubscribe' => 'boolean',
+            'allow_subscribe' => 'boolean',
+            'show_on_homepage' => 'boolean',
         ];
     }
 

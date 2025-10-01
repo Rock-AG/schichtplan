@@ -67,6 +67,14 @@
             <div class="">
 
                 <div class="block mb-2">
+                    <input id="show_on_homepage" name="show_on_homepage" type="checkbox" value="1" {{ old('show_on_homepage', $plan->show_on_homepage) ? 'checked' : '' }} >
+                    <label for="show_on_homepage">{{__("plan.showOnHomepage")}}</label>
+                    @error('show_on_homepage')
+                        <div class="text-red-700 text-xs italic">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="block mb-2">
                     <input id="allow_subscribe" name="allow_subscribe" type="checkbox" value="1" {{ old('allow_subscribe', $plan->allow_subscribe) ? 'checked' : '' }} >
                     <label for="allow_subscribe">{{__("plan.allowSubscribe")}}</label>
                     @error('allow_subscribe')
@@ -78,14 +86,6 @@
                     <input id="allow_unsubscribe" name="allow_unsubscribe" type="checkbox" value="1" {{ old('allow_unsubscribe', $plan->allow_unsubscribe) ? 'checked' : '' }} >
                     <label for="allow_unsubscribe">{{__("plan.allowUnsubscribe")}}</label>
                     @error('allow_unsubscribe')
-                        <div class="text-red-700 text-xs italic">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="block mb-2">
-                    <input id="show_on_homepage" name="show_on_homepage" type="checkbox" value="1" {{ old('show_on_homepage', $plan->show_on_homepage) ? 'checked' : '' }} >
-                    <label for="show_on_homepage">{{__("plan.showOnHomepage")}}</label>
-                    @error('show_on_homepage')
                         <div class="text-red-700 text-xs italic">{{ $message }}</div>
                     @enderror
                 </div>
