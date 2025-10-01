@@ -69,13 +69,13 @@
             <li>E-Mail-Adresse</li>
         </ul>
         <p class="mb-2">
-            Die gespeicherten Daten werden verwendet, um dem Verein die Planung der jeweiligen Veranstaltung zu ermöglichen und im Zuge der Planung und Durchführung der Veranstaltung ggf. Kontakt zu Ihnen aufzunehmen. Nach der jeweiligen Veranstaltung werden Ihre Kontaktdaten ggf. genutzt, um Sie über weitere, direkt damit in Verbindung stehende Veranstaltungen (z.B. Helferfest) zu informieren.
+            Die gespeicherten Daten werden verwendet, um dem Verein die Planung der jeweiligen Veranstaltung zu ermöglichen und im Zuge der Planung und Durchführung der Veranstaltung ggf. Kontakt mit Ihnen aufzunehmen. Nach der jeweiligen Veranstaltung werden Ihre Kontaktdaten ggf. genutzt, um Sie über weitere, direkt damit in Verbindung stehende Veranstaltungen (z.B. Helferfest) zu informieren.
         </p>
         <p class="mb-2">
             Die Rechtsgrundlage für diese Verarbeitung ist Ihre Zustimmung laut Art. 6 Abs. 1 S. 1 lit. a) DSGVO.
         </p>
         <p class="mb-2">
-            Die erhobenen Daten werden nach Abschluss der jeweiligen Veranstaltung und ggf. direkt damit verbundener Folgeveranstaltungen (z.B. Helferfest) gelöscht.
+            Die erhobenen Daten werden spätestens nach Abschluss der jeweiligen Veranstaltung und ggf. direkt damit verbundener Folgeveranstaltungen (z.B. Helferfest) gelöscht. Bei der Absage der Teilnahme an einer Schicht werden die zugehörigen Daten sofort nach dem Abschluss der Absage gelöscht.
         </p>
         <p class="mb-2">
             Die Bereitstellung dieser Daten ist nicht gesetzlich vorgeschrieben, allerdings ist ohne die Datenverarbeitung eine Bearbeitung von Anmeldungen nicht möglich.
@@ -99,7 +99,7 @@
             <b>5. Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde</b><br>
         </p>
         <p class="mb-2">
-            Gem. Art. 77 DSGVO besteht ein Beschwerderecht bei einer Aufsichtsbehörde. In Deutschland ist diese Stelle der Bundesbeauftragte für den Datenschutz und Informationsfreiheit.
+            Gem. Art. 77 DSGVO besteht ein Beschwerderecht bei einer Aufsichtsbehörde. In Deutschland ist dies der Bundesbeauftragte für den Datenschutz und Informationsfreiheit.
         </p>
         
     </div>
