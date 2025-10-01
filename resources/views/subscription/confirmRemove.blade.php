@@ -1,16 +1,31 @@
-@extends('layout.app')
+@extends('layout.app', [
+    'includeHeader' => true,
+    'pageTitle' => 'Absage bestätigen (' . $shift->title . ')',
+])
+
 @section('body')
-        <div class="py-2">
-        {{ __('subscription.confirmRemoveHelp') }} {{ $shift->title }} : {{ $shift->start }} - {{ $shift->end }}
+    <div class="max-w-full mx-2 mb-4 flex-1">
+        {{-- Header + Intro-Text --}}
+        <div class="w-full mb-6 md:mb-12 md:max-w-1/2 md:mx-auto md:text-center">
+            <h1 class="section-header mb-2">{{ __('subscription.removeConfirm.title') }}</h1>
+            <p class="text-sm md:text-base mb-2">{{ __('subscription.removeConfirm.intro') }}</p>
         </div>
-        <form method="post" action="{{route('plan.subscription.doConfirmRemove', [$plan, $shift,$confirmation])}}">
-            @csrf
-            <button type="submit" class="my-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-                {{__('plan.submit')}}
-            </button>
-        </form>
+
+        <div class="mb-6 md:mb-12">
+            <p class="md:text-lg md:text-center font-bold">{{ $shift->title }}</p>
+            <p class="text-sm md:text-base italic md:text-center">({{ $plan->title }})</p>
+            <p class="text-sm md:text-lg md:text-center">{!! \App\Http\Controllers\PlanController::buildDateString($shift->start, $shift->end, true) !!}</p>
+        </div>
+
+        <div class="w-full mb-6 md:mb-12 md:max-w-1/2 md:mx-auto md:text-center">
+            <form method="post" action="{{route('plan.subscription.doConfirmRemove', [$plan, $shift,$confirmation])}}">
+                @csrf
+
+                <button type="submit" class="icon-button big-button">
+                    <span>{{__('subscription.unsubscribeConfirm')}}</span>
+                    @include('partials.svg.frown')
+                </button>
+            </form>
+        </div>
     </div>
 @endsection

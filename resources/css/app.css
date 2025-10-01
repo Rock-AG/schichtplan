@@ -81,6 +81,11 @@
       aspect-ratio: 1 / 1;
     }
 
+    &.big-button {
+      @apply px-6 py-4;
+      padding-right: calc(((var(--spacing) * 6) * 2) + var(--size-button-icon));
+    }
+
     &.icon-arrow {
       &::after {
         content: "";

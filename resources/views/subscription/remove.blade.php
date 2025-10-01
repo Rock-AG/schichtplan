@@ -1,25 +1,51 @@
-@extends('layout.app')
+@extends('layout.app', [
+    'includeHeader' => true,
+    'pageTitle' => 'Absagen (' . $shift->title . ')',
+])
+
 @section('body')
-        <div class="py-2">
-        {{__('subscription.removeHelp')}}
+    <div class="max-w-full mx-2 mb-4 flex-1">
+        {{-- Header + Intro-Text --}}
+        <div class="w-full mb-6 md:mb-12 md:max-w-1/2 md:mx-auto md:text-center">
+            <h1 class="section-header mb-2">{{ __('subscription.remove.title') }}</h1>
+            <p class="text-sm md:text-base mb-2">{{ __('subscription.remove.intro') }}</p>
+            
         </div>
-        <form method="post" action="{{route('plan.subscription.remove', [$plan, $shift])}}">
-            @csrf
-            <div class="grid grid-rows-1 grid-flow-col gap-4">
-                <div>
-                    <label for="title" class="block text-gray-700 font-bold mb-1">{{__("plan.mail")}}</label>
-                    <input id="email" name="email" type="text" class="@error('email') border-red-500 @enderror w-full block text-black p-1 text-lg mb-2 border rounded">
-                    @error('email')
-                    <div class="text-red-500 text-xs italic">{{ $message }}</div>
-                    @enderror
+
+        <div class="mb-6 md:mb-12">
+            <p class="text-sm md:text-base md:text-center font-bold mb-2">{{ __('subscription.remove.shiftInfoIntro') }}</p>
+            <p class="md:text-lg md:text-center font-bold">{{ $shift->title }}</p>
+            <p class="text-sm md:text-base italic md:text-center">({{ $plan->title }})</p>
+            <p class="text-sm md:text-lg md:text-center">{!! \App\Http\Controllers\PlanController::buildDateString($shift->start, $shift->end, true) !!}</p>
+        </div>
+
+        <div class="w-full mb-6 md:mb-12 md:max-w-1/2 md:mx-auto md:text-center">
+            <form method="post" action="{{route('plan.subscription.remove', [$plan, $shift])}}">
+                @csrf
+
+                <div class="flex flex-col md:flex-row md:items-center gap-2 mb-12">
+                    <div class="md:flex-3">
+                        <input id="email" name="email" placeholder="{{__('subscription.email')}}" type="text" class="@error('email') error @enderror w-full">
+                        @error('email')
+                            <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="md:flex-1">
+                        <button type="submit" class="icon-button w-full">
+                            <span>{{__('subscription.unsubscribe')}}</span>
+                            @include('partials.svg.frown')
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="my-button">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                </svg>
-                {{__('plan.submit')}}
-            </button>
-        </form>
+
+                
+                <div class="mb-2">
+                    <a href="{{ route('plan.show', $plan) }}" class="icon-button">
+                        {{__('general.buttonBack')}}
+                        @include('partials.svg.arrow-left')
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 @endsection
