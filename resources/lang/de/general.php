@@ -6,4 +6,7 @@ return [
     "buttonSave" => "Speichern",
     "buttonCancel" => "Abbrechen",
     "buttonBack" => "Zurück",
+    "mail" => [
+        "greeting" => "Hallo!"
+    ],
 ];

@@ -42,6 +42,7 @@ class SendAllLinksNotification extends Notification
     public function toMail($notifiable)
     {
         $msg = (new MailMessage)
+            ->greeting(__('general.mail.greeting'))
             ->subject(__('plan.allLinksEmailSubject'))
             ->line(__('plan.allLinksEmail'));
         foreach ($this->links as $l) {

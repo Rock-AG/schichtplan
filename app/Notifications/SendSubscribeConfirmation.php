@@ -44,6 +44,7 @@ class SendSubscribeConfirmation extends Notification
         $shiftInfo .= PlanController::buildDateString($this->shift->start, $this->shift->end, true);
 
         return (new MailMessage)
+            ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.subscribeConfirmation'))
             ->line(__('subscription.subscribeConfirmationText'))
             ->line(new HtmlString($shiftInfo));

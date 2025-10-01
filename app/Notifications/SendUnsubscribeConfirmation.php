@@ -43,6 +43,7 @@ class SendUnsubscribeConfirmation extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.unsubscribeConfirmation'))
             ->line(__('subscription.confirmUnsubscribe'))
             ->action(__('subscription.unsubscribe'), $this->unsubscribeLink)

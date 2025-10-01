@@ -48,6 +48,7 @@ class SendLinksNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->greeting(__('general.mail.greeting'))
             ->subject(__('plan.linksEmailSubject')." ".$this->title)
             ->line(__('plan.linksEmailSubscribers'))
             ->line($this->subscriberLink)

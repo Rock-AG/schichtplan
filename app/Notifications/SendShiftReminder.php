@@ -45,6 +45,7 @@ class SendShiftReminder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.reminder'))
             ->line(__('subscription.reminderBody'))
             ->line($this->shifts)
