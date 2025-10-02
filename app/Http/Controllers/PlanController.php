@@ -319,7 +319,7 @@ class PlanController extends Controller
         $this->authorize("forceDelete", $plan);
         $plan->forceDelete();
         Session::flash('info', __('plan.successfullyDestroyed'));
-        return \redirect()->route('home');
+        return \redirect()->route('admin');
     }
 
 

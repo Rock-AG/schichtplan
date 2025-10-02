@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\PlanController;
@@ -78,9 +79,14 @@ Route::post('/recover/{plan:view_id?}', [PlanController::class, 'doRecover'])
  *****************************************  */
 
 Route::get('/plan/{plan:edit_id}', [PlanController::class, 'admin'])
-  ->name('plan.admin');
+  ->name('plan.admin')
+  ->middleware('auth.basic.fromEnv');
 Route::get('/plan/{plan:edit_id}/subscriptions', [PlanController::class, 'admin_subscriptions'])
-  ->name('plan.admin_subscriptions');
+  ->name('plan.admin_subscriptions')
+  ->middleware('auth.basic.fromEnv');
+Route::delete('/plan/{plan:edit_id}/destroy', [PlanController::class, 'destroy'])
+  ->name('plan.destroy')
+  ->middleware('auth.basic.fromEnv');
 
 /**
  * Exporting
@@ -143,3 +149,7 @@ Route::get('/s/{plan:view_id}/shift/{shift}/remove/{confirmation}', [Subscriptio
 Route::get('/impressum', function() {
   return view('imprint');
 })->name('imprint');
+
+Route::get('/admin', [AdminController::class, 'admin'])
+  ->name('admin')
+  ->middleware('auth.basic.fromEnv');
