@@ -43,10 +43,21 @@ class SendSubscribeConfirmation extends Notification
         $shiftInfo .= '<br/>';
         $shiftInfo .= PlanController::buildDateString($this->shift->start, $this->shift->end, true);
 
-        return (new MailMessage)
+        $message = (new MailMessage)
             ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.subscribeConfirmation'))
             ->line(__('subscription.subscribeConfirmationText'))
             ->line(new HtmlString($shiftInfo));
+        
+        // Add contact info if the shift has it
+        if ($this->shift->hasContactInfo()) {
+            if ($this->shift->contact_name) {
+                $message->line(__('subscription.subscribeConfirmationContactInfo_withName', ['contact_info' => $this->shift->getContactInfo()]));
+            } else {
+                $message->line(__('subscription.subscribeConfirmationContactInfo_withoutName', ['contact_info' => $this->shift->getContactInfo()]));
+            }
+        }
+
+        return $message;
     }
 }

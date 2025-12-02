@@ -22,6 +22,9 @@ class Shift extends Model
         'start',
         'end',
         'team_size',
+        'contact_name',
+        'contact_email',
+        'contact_phone',
     ];
 
     /**
@@ -98,5 +101,33 @@ class Shift extends Model
         else {
             return $start->isoFormat("dd.. DD.MM.YYYY HH:mm") . ' - ' . $end->isoFormat("dd. DD.MM.YYYY HH:mm");
         }
+    }
+
+    public function hasContactInfo(): bool
+    {
+        return $this->contact_name || $this->contact_email || $this->contact_phone;
+    }
+
+    public function getContactInfo(): string
+    {
+        $out = "";
+
+        if ($this->contact_name) {
+            $out .= $this->contact_name;
+        }
+        if ($this->contact_email && $this->contact_phone) {
+            $out .= $this->contact_name ? " (" : "";
+            $out .= $this->contact_email . ", ";
+            $out .= $this->contact_phone;
+            $out .= $this->contact_name ? ")" : "";
+        }
+        elseif ($this->contact_email || $this->contact_phone) {
+            $out .= $this->contact_name ? " (" : "";
+            $out .= $this->contact_email ?? "";
+            $out .= $this->contact_phone ?? "";
+            $out .= $this->contact_name ? ")" : "";
+        }
+
+        return $out;
     }
 }

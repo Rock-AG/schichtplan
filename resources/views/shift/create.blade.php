@@ -82,6 +82,51 @@
                         <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <div class="accordion-container mb-2">
+                    <div class="ac group">
+
+                        <h3 class="ac-header flex">
+                            <button type="button" class="ac-trigger flex justify-left grow relative items-center py-2 border-b-ci-white border-b-1 cursor-pointer font-semibold lg:text-lg">
+                                <span class="text-left w-full">{{ __('shift.contact_info_header') }}</span>
+                                <span class="group-[.is-active]:rotate-180 ml-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path></svg>
+                                </span>
+                            </button>
+                        </h3>
+
+                        <div class="ac-panel overflow-hidden">
+
+                            <div class="my-2">
+                                <label for="contact_name" class="block mb-1 text-sm md:text-base">{{__("shift.contact_name")}}</label>
+                                <input id="contact_name" name="contact_name" placeholder="{{__('shift.contact_name')}}" type="text" class="@error('contact_name') error @enderror w-full" value="{{ old('contact_name', $shift->contact_name) }}">
+                                @error('contact_name')
+                                    <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="md:flex md:gap-2">
+                                <div class="mb-2 md:mb-0 md:flex-1">
+                                    <label for="contact_email" class="block mb-1 text-sm md:text-base">{{__("shift.contact_email")}}</label>
+                                    <input id="contact_email" name="contact_email" placeholder="{{__('shift.contact_email')}}" type="text" class="@error('contact_email') error @enderror w-full" value="{{ old('contact_email', $shift->contact_email) }}">
+                                    @error('contact_email')
+                                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-2 md:mb-0 md:flex-1">
+                                    <label for="contact_phone" class="block mb-1 text-sm md:text-base">{{__("shift.contact_phone")}}</label>
+                                    <input id="contact_phone" name="contact_phone" placeholder="{{__('shift.contact_phone')}}" type="text" class="@error('contact_phone') error @enderror w-full" value="{{ old('contact_phone', $shift->contact_phone) }}">
+                                    @error('contact_phone')
+                                        <div class="text-red-700 text-xs italic pl-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="">

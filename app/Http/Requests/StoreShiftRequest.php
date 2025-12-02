@@ -24,6 +24,9 @@ class StoreShiftRequest extends FormRequest
             'start' => 'required|date|before:end',
             'end' => 'required|date|after:start',
             'team_size' => 'required|int|max:100|min:0|numeric',
+            'contact_name' => 'max:200',
+            'contact_email' => 'nullable|email|max:200',
+            'contact_phone' => 'nullable|regex:/^\+?[0-9\s]{8,20}$/|max:200',
             // 'repetition' => 'int|min:1|max:50|min:0|numeric',
             // 'repetition_type' => Rule::in(RepetitionType::cases()),
         ];

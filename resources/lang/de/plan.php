@@ -73,4 +73,5 @@ return [
         'shiftsFull' => 'Bereits vollständig gefüllte Schichten',
     ],
     'confirmDelete' => 'Soll der Plan wirklich gelöscht werden? Damit werden ALLE Daten zu Schichten, Helfern, etc. endgültig gelöscht!',
+    'contactInfo' => 'Kontaktinfo',
 ];

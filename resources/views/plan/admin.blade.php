@@ -146,6 +146,7 @@
 
                             <div class="hidden md:table-header-group">
                                 <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.titleDescription') }}</div>
+                                <div class="hidden lg:table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('plan.contactInfo') }}</div>
                                 <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.dateTime') }}</div>
                                 <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd p-2">{{ __('shift.team_sizeShort') }}</div>
                                 <div class="table-cell italic text-sm whitespace-nowrap bg-table-odd w-1 p-2">{{ __('shift.action') }}</div>
@@ -157,6 +158,23 @@
                                     <div class="align-top md:table-cell text-sm lg:text-base mb-2 md:mb-0 md:p-2">
                                         <span class="font-bold">{{ $shift->title }}</span>
                                         <p class="text-xs md:text-sm">{{ $shift->description }}</p>
+                                        @if($shift->hasContactInfo())
+                                            <p class="lg:hidden mt-2 text-xs md:text-sm">
+                                                {{ __('plan.contactInfo') }}: {{ $shift->getContactInfo() }}
+                                            </p>
+                                        @endif
+                                    </div>
+
+                                    <div class="align-top hidden lg:table-cell mb-2 md:mb-0 md:p-2">
+                                        @if($shift->contact_name)
+                                            <p class="">{{ $shift->contact_name }}</p>
+                                        @endif
+                                        @if($shift->contact_email)
+                                            <p class="italic text-sm">{{ $shift->contact_email }}</p>
+                                        @endif
+                                        @if($shift->contact_phone)
+                                            <p class="italic text-sm">{{ $shift->contact_phone }}</p>
+                                        @endif
                                     </div>
 
                                     <div class="align-top md:table-cell mb-2 md:mb-0 md:p-2 whitespace-nowrap">

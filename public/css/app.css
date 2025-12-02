@@ -1491,6 +1491,16 @@
       display: grid;
     }
   }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+  .lg\:table-cell {
+    @media (width >= 64rem) {
+      display: table-cell;
+    }
+  }
   .lg\:max-w-1\/2 {
     @media (width >= 64rem) {
       max-width: calc(1/2 * 100%);

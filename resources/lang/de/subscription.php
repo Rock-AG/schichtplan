@@ -34,6 +34,8 @@ return [
     'successfullyRemoved' => "Du bist jetzt von der Schicht abgemeldet.",
     'subscribeConfirmation' => "Anmeldebestätigung",
     'subscribeConfirmationText' => "Willkommen im Team! Du hast dich für folgende Schicht angemeldet:",
+    'subscribeConfirmationContactInfo_withName' => "Falls du Fragen hast, wende dich gerne an dein*e Ansprechpartner*in: :contact_info.",
+    'subscribeConfirmationContactInfo_withoutName' => "Falls du Fragen hast, wende dich gerne an uns: :contact_info",
     'notification' => 'Errinnere mich einen Tag bevor meine Schicht beginnt.',
     'reminder' => 'Du hast morgen eine Schicht',
     'reminderBody' => "Vergiss nicht die Schicht(en), für die du dich morgen eingetragen hast. Infos findest du im entsprechenden Schichtplan.",
