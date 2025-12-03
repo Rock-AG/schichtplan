@@ -130,4 +130,28 @@ class Shift extends Model
 
         return $out;
     }
+
+    public function getSubscriptionsEmailString(): string
+    {
+        $emails = [];
+
+        foreach ($this->subscriptions as $subscription) {
+            
+            // display-name: "John Doe (Joe)"
+            $email = '"'
+                . $subscription->name
+                . ($subscription->nickname ? ' (' . $subscription->nickname . ')' : '')
+                . '"'
+            ;
+
+            $email .= ' ';
+
+            // angle-addr: <john@doe.com>
+            $email .= '<' . $subscription->email . '>';
+
+            $emails[] = $email;
+        }
+
+        return implode(', ', $emails);
+    }
 }

@@ -62,4 +62,6 @@ return [
     'subscribe' => 'Anmelden',
     'unsubscribe' => 'Absagen',
     'privacyText' => 'Mit dem Absenden des Formulars stimmst du der Verarbeitung deiner Daten laut Art. 6 Abs. 1 S. 1 lit. a) DSGVO zu.<br>Deine Kontaktdaten werden nur verwendet, um dir Informationen über deine Schicht zukommen zu lassen.<br>Wir werden dir keine Werbung o.ä. schicken :)',
+    'copyEmails' => 'Email-Adressen kopieren',
+    'copyEmailsSuccess' => 'Kopiert!',
 ];

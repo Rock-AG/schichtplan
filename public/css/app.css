@@ -533,6 +533,9 @@
   .flex-2 {
     flex: 2;
   }
+  .flex-9 {
+    flex: 9;
+  }
   .grow {
     flex-grow: 1;
   }
@@ -1216,11 +1219,6 @@
   .md\:mb-12 {
     @media (width >= 48rem) {
       margin-bottom: calc(var(--spacing) * 12);
-    }
-  }
-  .md\:block {
-    @media (width >= 48rem) {
-      display: block;
     }
   }
   .md\:flex {

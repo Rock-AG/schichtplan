@@ -93,15 +93,22 @@
                 <div class="md:mb-2 overflow-x-auto">
 
                     {{-- Header: Shift percentage, title, date/time --}}
-                    <div class="flex flex-wrap md:block justify-left grow relative items-center py-2 font-semibold lg:text-lg">
+                    <div class="flex flex-wrap gap-2 justify-left grow relative items-center py-2 font-semibold lg:text-lg">
                         <div class="md:inline">
-                            <span class="rounded font-bold p-2 mr-2 bg-{{ ($shift->getSubscriptionsPercentageColor()) }}-300 text-ci-black">
+                            <span class="rounded font-bold p-2 bg-{{ ($shift->getSubscriptionsPercentageColor()) }}-300 text-ci-black">
                                 {{$shift->subscriptions->count()}} / {{$shift->team_size}}
                             </span>
                         </div>
-                        <div class="flex-1 md:inline @if(count($shift->subscriptions) == 0) [opacity:0.4] @endif">
+                        <div class="flex-9 @if(count($shift->subscriptions) == 0) [opacity:0.4] @endif">
                             <span class="block md:inline-block text-left text-md md:text-lg">{{ $shift->title }}</span>
-                            <span class="block md:inline-block text-left text-xs md:text-sm">({{ $shift->getTimespan() }})</span>
+                            <span class="block md:inline-block text-left text-xs md:text-sm whitespace-nowrap">({{ $shift->getTimespan() }})</span>
+                        </div>
+                        <div class="@if(count($shift->subscriptions) == 0) hidden @endif">
+                            <button type="submit" class="icon-button w-auto whitespace-nowrap js-copy-text" data-text="{{ $shift->getSubscriptionsEmailString() }}" data-success-text="{{ __('shift.copyEmailsSuccess') }}">
+                                <span>{{ __('shift.copyEmails') }}</span>
+                                @include('partials.svg.copy')
+                            </a>    
+                        
                         </div>
                     </div>
 
@@ -130,10 +137,10 @@
                                         {{ $subscription->name }}
                                     </div>
                                     <div class="md:table-cell md:p-1 md:px-2 align-middle text-xs md:text-base">
-                                        {{ $subscription->email }}
+                                        <a class="textlink" href="mailto:{{ $subscription->email }}">{{ $subscription->email }}</a>
                                     </div>
                                     <div class="md:table-cell md:p-1 md:px-2 align-middle text-xs md:text-base">
-                                        {{ $subscription->phone }}
+                                        <a class="textlink" href="tel:{{ $subscription->phone }}">{{ $subscription->phone }}</a>
                                     </div>
                                     <div class="md:table-cell md:p-1 md:px-2 align-middle text-xs md:text-base">
                                         {{ $subscription->comment }}

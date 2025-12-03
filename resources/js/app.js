@@ -104,3 +104,22 @@ function registerCopyLink() {
     });
 }
 document.addEventListener('DOMContentLoaded', registerCopyLink);
+
+function registerCopyText() {
+    const copyButtons = Array.from(document.querySelectorAll(".js-copy-text"));
+    copyButtons.forEach(function (e) {
+        e.addEventListener('click', function () {
+            const text = this.dataset.text;
+
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    this.querySelector('span').textContent = this.dataset.successText;
+                })
+                .catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', registerCopyText);

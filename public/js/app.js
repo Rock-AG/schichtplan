@@ -2940,6 +2940,21 @@ function registerCopyLink() {
   });
 }
 document.addEventListener('DOMContentLoaded', registerCopyLink);
+function registerCopyText() {
+  var copyButtons = Array.from(document.querySelectorAll(".js-copy-text"));
+  copyButtons.forEach(function (e) {
+    e.addEventListener('click', function () {
+      var _this2 = this;
+      var text = this.dataset.text;
+      navigator.clipboard.writeText(text).then(function () {
+        _this2.querySelector('span').textContent = _this2.dataset.successText;
+      })["catch"](function (err) {
+        console.error('Failed to copy text: ', err);
+      });
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', registerCopyText);
 
 /***/ })
 
