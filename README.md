@@ -150,6 +150,6 @@ Schichtplan is free software and under [AGPL license](https://www.gnu.org/licens
 
 [Laravel](https://laravel.com) is Opensource software and under [MIT-License](https://opensource.org/licenses/MIT).
 
-[Flatpickr](https://opensource.org/licenses/MIT) is opensource software and under [MIT_license](https://opensource.org/licenses/MIT)
+[Flatpickr](https://flatpickr.js.org/) is opensource software and under [MIT_license](https://opensource.org/licenses/MIT)
 
 [Tailwindcss](https://github.com/tailwindlabs/tailwindcss) is opensource software and under [MIT_license](https://opensource.org/licenses/MIT)
