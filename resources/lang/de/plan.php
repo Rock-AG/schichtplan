@@ -74,4 +74,5 @@ return [
     ],
     'confirmDelete' => 'Soll der Plan wirklich gelöscht werden? Damit werden ALLE Daten zu Schichten, Helfern, etc. endgültig gelöscht!',
     'contactInfo' => 'Kontaktinfo',
+    'shiftsPluralized' => '{0} :count Schichten|{1} :count Schicht|[2,*] :count Schichten',
 ];
