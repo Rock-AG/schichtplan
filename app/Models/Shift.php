@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\PlanController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -153,5 +154,14 @@ class Shift extends Model
         }
 
         return implode(', ', $emails);
+    }
+
+    public function buildShiftInfoForEmail():string
+    {
+        $out = $this->title;
+        $out .= '<br/>';
+        $out .= PlanController::buildDateString($this->start, $this->end, true);
+
+        return $out;
     }
 }

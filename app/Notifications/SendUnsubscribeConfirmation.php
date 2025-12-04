@@ -2,10 +2,12 @@
 
 namespace App\Notifications;
 
+use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\HtmlString;
 
 class SendUnsubscribeConfirmation extends Notification
 {
@@ -13,14 +15,16 @@ class SendUnsubscribeConfirmation extends Notification
 
     private string $unsubscribeLink;
     private string $title;
+    private Subscription $subscription;
 
     /**
      * Create a new notification instance.
      *
      */
-    public function __construct(string $unsubscribeLink)
+    public function __construct(string $unsubscribeLink, Subscription $subscription)
     {
         $this->unsubscribeLink = $unsubscribeLink;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -43,11 +47,15 @@ class SendUnsubscribeConfirmation extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.unsubscribeConfirmation'))
+            ->greeting(__('general.mail.greeting', ['nickname' => $this->subscription->nickname]))
             ->line(__('subscription.confirmUnsubscribe'))
             ->action(__('subscription.unsubscribe'), $this->unsubscribeLink)
-            ->line(__('subscription.confirmUnsubscribeEnd'));
+            ->line(__('subscription.confirmUnsubscribeShiftInfo'))
+            ->line(new HtmlString('<b>' . $this->subscription->shift->buildShiftInfoForEmail() . '</b>'))
+            ->line(__('subscription.confirmUnsubscribeEnd'))
+            ->salutation(new HtmlString(__('general.mail.salutation')))
+        ;
     }
 
     /**

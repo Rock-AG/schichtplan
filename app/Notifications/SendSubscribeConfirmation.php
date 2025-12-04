@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use App\Http\Controllers\PlanController;
 use App\Models\Shift;
+use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -13,11 +14,11 @@ class SendSubscribeConfirmation extends Notification
 {
     use Queueable;
 
-    private Shift $shift;
+    private Subscription $subscription;
 
-    public function __construct(Shift $shift)
+    public function __construct(Subscription $subscription)
     {
-        $this->shift = $shift;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -39,22 +40,20 @@ class SendSubscribeConfirmation extends Notification
      */
     public function toMail($notifiable)
     {
-        $shiftInfo = $this->shift->title;
-        $shiftInfo .= '<br/>';
-        $shiftInfo .= PlanController::buildDateString($this->shift->start, $this->shift->end, true);
-
         $message = (new MailMessage)
-            ->greeting(__('general.mail.greeting'))
             ->subject(__('subscription.subscribeConfirmation'))
+            ->greeting(__('general.mail.greeting', ['nickname' => $this->subscription->nickname]))
             ->line(__('subscription.subscribeConfirmationText'))
-            ->line(new HtmlString($shiftInfo));
+            ->line(new HtmlString('<b>' . $this->subscription->shift->buildShiftInfoForEmail() . '</b>'))
+            ->salutation(new HtmlString(__('general.mail.salutation')))
+        ;
         
         // Add contact info if the shift has it
-        if ($this->shift->hasContactInfo()) {
-            if ($this->shift->contact_name) {
-                $message->line(__('subscription.subscribeConfirmationContactInfo_withName', ['contact_info' => $this->shift->getContactInfo()]));
+        if ($this->subscription->shift->hasContactInfo()) {
+            if ($this->subscription->shift->contact_name) {
+                $message->line(__('subscription.subscribeConfirmationContactInfo_withName', ['contact_info' => $this->subscription->shift->getContactInfo()]));
             } else {
-                $message->line(__('subscription.subscribeConfirmationContactInfo_withoutName', ['contact_info' => $this->shift->getContactInfo()]));
+                $message->line(__('subscription.subscribeConfirmationContactInfo_withoutName', ['contact_info' => $this->subscription->shift->getContactInfo()]));
             }
         }
 

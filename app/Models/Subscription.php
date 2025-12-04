@@ -62,7 +62,7 @@ class Subscription extends Model
      * Send a subscribe confirmation Email
      */
     public function sendSubscribeConfirmation() {
-        $this->notify(new SendSubscribeConfirmation($this->shift));
+        $this->notify(new SendSubscribeConfirmation($this));
     }
 
     /**
@@ -75,7 +75,7 @@ class Subscription extends Model
             'plan' => $this->shift->plan,
             'shift' => $this->shift,
             'confirmation' => $this->confirmation]);
-        $this->notify(new SendUnsubscribeConfirmation($link));
+        $this->notify(new SendUnsubscribeConfirmation($link, $this));
     }
 
     /**

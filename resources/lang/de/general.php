@@ -7,6 +7,8 @@ return [
     "buttonCancel" => "Abbrechen",
     "buttonBack" => "Zurück",
     "mail" => [
-        "greeting" => "Hallo!"
+        "greeting" => "Hi :nickname!",
+        "salutation" => "Liebe Grüße<br>Deine Rock AG",
+        "backupLinkText" => 'Falls du den ":actionText"-Button nicht anklicken kannst, kopiere stattdessen diese URL in die Adressleiste deines Browsers: ',
     ],
 ];
