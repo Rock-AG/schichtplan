@@ -113,6 +113,11 @@
                         {{__('general.buttonCancel')}}
                         @include('partials.svg.x')
                     </a>
+                @elseif($mode == "create")
+                    <a href="{{ route('admin') }}" class="icon-button">
+                        {{__('general.buttonCancel')}}
+                        @include('partials.svg.x')
+                    </a>
                 @endif
             </div>
             
